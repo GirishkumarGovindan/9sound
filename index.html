@@ -1,0 +1,3510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade 9 Physics Lab: Sound Waves — Characteristics &amp; Applications (Chapter 10)</title>
+  <style>
+    /* =========================================================================
+       DESIGN SYSTEM & RESET (SELF-CONTAINED, ZERO EXTERNAL DEPENDENCIES)
+       ========================================================================= */
+    :root {
+      --bg-app: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-subtle: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-light: #94a3b8;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-soft: #eff6ff;
+      --emerald: #059669;
+      --emerald-soft: #ecfdf5;
+      --amber: #d97706;
+      --amber-soft: #fffbeb;
+      --rose: #e11d48;
+      --rose-soft: #fff1f2;
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+      --cyan: #0891b2;
+      --cyan-soft: #ecfeff;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.1);
+      --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-app);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    .mono { font-family: var(--font-mono); }
+
+    /* =========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================= */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #0f172a 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-md);
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .container {
+      max-width: 1340px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .header-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0 10px;
+    }
+
+    .badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .badge-primary {
+      background: #2563eb;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .badge-sub {
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(1.18rem, 2.4vw, 1.62rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-audio {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: all 0.15s ease;
+    }
+
+    .btn-audio.on {
+      background: #059669;
+      color: #ffffff;
+      border-color: #34d399;
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.45);
+    }
+
+    .btn-audio.off {
+      background: rgba(255, 255, 255, 0.12);
+      color: #e2e8f0;
+    }
+
+    .btn-guide {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 8px 13px;
+      border-radius: var(--radius-md);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-guide:hover { background: rgba(255, 255, 255, 0.22); }
+
+    .tab-bar-wrap {
+      overflow-x: auto;
+      padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 6px;
+      min-width: max-content;
+    }
+
+    .tab-btn {
+      padding: 8px 13px;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: rgba(30, 41, 59, 0.78);
+      color: #cbd5e1;
+    }
+
+    .tab-btn:hover {
+      background: rgba(30, 41, 59, 1);
+      color: #ffffff;
+    }
+
+    .tab-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #60a5fa;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.45);
+    }
+
+    /* Guide Drawer */
+    .guide-drawer {
+      display: none;
+      background: #eff6ff;
+      border-bottom: 1px solid #bfdbfe;
+      padding: 14px 0;
+      color: #1e3a8a;
+      font-size: 12.5px;
+    }
+
+    .guide-drawer.open { display: block; }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .guide-item {
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+    }
+
+    .guide-item strong {
+      display: block;
+      color: #1d4ed8;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    /* =========================================================================
+       LAYOUT GRIDS & CARDS
+       ========================================================================= */
+    main {
+      flex: 1;
+      padding: 20px 0 36px;
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .tab-panel.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: 1.32fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    @media (max-width: 980px) {
+      .lab-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 16px 18px;
+    }
+
+    .card-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 1.04rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    .pill {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .pill-blue { background: var(--primary-soft); color: var(--primary); }
+    .pill-emerald { background: var(--emerald-soft); color: var(--emerald); }
+    .pill-amber { background: var(--amber-soft); color: var(--amber); }
+    .pill-rose { background: var(--rose-soft); color: var(--rose); }
+    .pill-purple { background: var(--purple-soft); color: var(--purple); }
+    .pill-cyan { background: var(--cyan-soft); color: var(--cyan); }
+
+    .canvas-box {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .chart-box {
+      position: relative;
+      width: 100%;
+      height: 215px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .canvas-box { height: 300px; }
+      .chart-box { height: 190px; }
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* =========================================================================
+       CONTROLS, SLIDERS & BUTTONS
+       ========================================================================= */
+    .control-group { margin-bottom: 12px; }
+    .control-group:last-child { margin-bottom: 0; }
+
+    .control-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .control-val {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #cbd5e1;
+      border-radius: 999px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 5px rgba(15, 23, 42, 0.28);
+      transition: transform 0.12s ease;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.12); }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 5px rgba(15, 23, 42, 0.28);
+    }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+    }
+
+    .btn-row-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .btn-row-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .btn {
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      font-size: 12.5px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.14s ease;
+      text-align: center;
+      user-select: none;
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.28);
+    }
+    .btn-primary:hover { background: var(--primary-hover); }
+
+    .btn-emerald {
+      background: var(--emerald);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.28);
+    }
+    .btn-emerald:hover { background: #047857; }
+
+    .btn-rose {
+      background: var(--rose);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(225, 29, 72, 0.28);
+    }
+    .btn-rose:hover { background: #be123c; }
+
+    .btn-amber {
+      background: var(--amber);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(217, 119, 6, 0.28);
+    }
+    .btn-amber:hover { background: #b45309; }
+
+    .btn-secondary {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border-color: var(--border-strong);
+    }
+    .btn-secondary:hover { background: #e2e8f0; }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .btn-chip {
+      padding: 7px 10px;
+      font-size: 11.5px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border: 1px solid var(--border-strong);
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+
+    .btn-chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Saptak Piano Keys */
+    .saptak-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      margin-bottom: 10px;
+    }
+
+    .note-key {
+      padding: 10px 6px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+      border: 1.5px solid #cbd5e1;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.12s ease;
+      box-shadow: 0 2px 4px rgba(15, 23, 42, 0.06);
+    }
+
+    .note-key:hover {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+
+    .note-key.active {
+      background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      border-color: #1e40af;
+      transform: translateY(1px);
+    }
+
+    .note-key .swara {
+      display: block;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .note-key .hz {
+      display: block;
+      font-size: 10.5px;
+      font-family: var(--font-mono);
+      opacity: 0.85;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 9px 12px;
+      font-size: 12.5px;
+    }
+
+    .toggle-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* =========================================================================
+       METRICS, FORMULAS, TABLES & CHECKPOINTS
+       ========================================================================= */
+    .metrics-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+    }
+
+    .metrics-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .metric-box {
+      padding: 10px 11px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+    }
+
+    .metric-box.blue { background: var(--primary-soft); border-color: #bfdbfe; }
+    .metric-box.emerald { background: var(--emerald-soft); border-color: #a7f3d0; }
+    .metric-box.amber { background: var(--amber-soft); border-color: #fde68a; }
+    .metric-box.rose { background: var(--rose-soft); border-color: #fecdd3; }
+    .metric-box.purple { background: var(--purple-soft); border-color: #ddd6fe; }
+    .metric-box.cyan { background: var(--cyan-soft); border-color: #a5f3fc; }
+
+    .metric-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .metric-box.blue .metric-label { color: #1d4ed8; }
+    .metric-box.emerald .metric-label { color: #047857; }
+    .metric-box.amber .metric-label { color: #b45309; }
+    .metric-box.rose .metric-label { color: #be123c; }
+    .metric-box.purple .metric-label { color: #6d28d9; }
+    .metric-box.cyan .metric-label { color: #0e7490; }
+
+    .metric-value {
+      font-size: 1.06rem;
+      font-weight: 800;
+      margin-top: 2px;
+      color: var(--text-main);
+    }
+
+    .metric-sub {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .formula-card {
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: var(--radius-md);
+      padding: 11px 13px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .formula-highlight {
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      max-height: 225px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+      text-align: left;
+    }
+
+    thead {
+      background: #f1f5f9;
+      color: #334155;
+      border-bottom: 1px solid var(--border-strong);
+      position: sticky;
+      top: 0;
+    }
+
+    th, td {
+      padding: 7px 9px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #f8fafc; }
+
+    .meter-bar-bg {
+      width: 100%;
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+
+    .meter-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #3b82f6, #f59e0b);
+      border-radius: 999px;
+      transition: width 0.15s ease;
+    }
+
+    .checkpoint-box {
+      margin-top: 18px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      border-radius: var(--radius-lg);
+      padding: 15px 18px;
+      color: #1e1b4b;
+    }
+
+    .checkpoint-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .dot-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4f46e5;
+    }
+
+    .checkpoint-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #312e81;
+    }
+
+    @media (max-width: 820px) {
+      .checkpoint-grid { grid-template-columns: 1fr; }
+    }
+
+    .checkpoint-list { padding-left: 18px; }
+    .checkpoint-list li { margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+
+  <!-- =======================================================================
+       HEADER & TABBED NAVIGATION
+       ======================================================================= -->
+  <header>
+    <div class="container">
+      <div class="header-top">
+        <div>
+          <div class="badges">
+            <span class="badge-primary">Grade 9 Science • Chapter 10</span>
+            <span class="badge-sub">NCERT Interactive Acoustics &amp; Wave Laboratory</span>
+          </div>
+          <h1>Sound Waves: Characteristics and Applications</h1>
+        </div>
+        <div class="header-actions">
+          <button id="audio-toggle-btn" class="btn-audio on" onclick="toggleAudioEngine()">🔊 Audio: ON</button>
+          <button class="btn-guide" onclick="toggleGuide()">Lab Guide &amp; Reset</button>
+        </div>
+      </div>
+
+      <div class="tab-bar-wrap">
+        <div class="tab-bar" role="tablist">
+          <button onclick="switchTab(0)" id="tab-btn-0" class="tab-btn active">Activity 10.1 • Rubber Band &amp; Box</button>
+          <button onclick="switchTab(1)" id="tab-btn-1" class="tab-btn">Activity 10.2 • Tuning Fork &amp; Water</button>
+          <button onclick="switchTab(2)" id="tab-btn-2" class="tab-btn">Activity 10.3 • Sound in Solids (Desk)</button>
+          <button onclick="switchTab(3)" id="tab-btn-3" class="tab-btn">Activity 10.4 • Water Tub &amp; Vacuum</button>
+          <button onclick="switchTab(4)" id="tab-btn-4" class="tab-btn">Activity 10.5 • Slinky &amp; Piston Wave</button>
+          <button onclick="switchTab(5)" id="tab-btn-5" class="tab-btn">Activity 10.6 • Sound Energy &amp; Grains</button>
+          <button onclick="switchTab(6)" id="tab-btn-6" class="tab-btn">Activity 10.7 • Saptak &amp; FFT Spectrum</button>
+          <button onclick="switchTab(7)" id="tab-btn-7" class="tab-btn">Activity 10.8 • Audible &amp; Ultrasonic</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Guide Drawer -->
+  <div id="guide-drawer" class="guide-drawer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <strong>NCERT Chapter 10 (Sound Waves) — Complete 8-Activity Interactive Laboratory with Synthesized Audio</strong>
+        <button class="btn btn-secondary" style="padding:6px 12px; font-size:12px;" onclick="resetAllActivities()">Reset All 8 Activities</button>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-item"><strong>10.1 &amp; 10.2: Vibrations Produce Sound</strong>Pluck a rubber band (drag on canvas or click button) and strike tuning forks to make water ripples.</div>
+        <div class="guide-item"><strong>10.3 &amp; 10.4: Media &amp; Vacuum</strong>Compare sound speed in Wood/Steel (3800–5000 m/s), Water (1500 m/s), Air (340 m/s), and Vacuum (0 m/s).</div>
+        <div class="guide-item"><strong>10.5 &amp; 10.6: Longitudinal Waves &amp; Energy</strong>Inspect Compressions (C), Rarefactions (R), Wavelength (λ), and sound energy making grains jump.</div>
+        <div class="guide-item"><strong>10.7 &amp; 10.8: Spectrum &amp; Hearing Range</strong>Analyze Indian musical notes (Sa–Sa') with FFT overtones and sweep 5 Hz – 40 kHz across species.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       MAIN WORKSPACE
+       ======================================================================= -->
+  <main class="container">
+
+    <!-- =====================================================================
+         ACTIVITY 10.1: VIBRATING RUBBER BAND ON CARDBOARD BOX
+         ===================================================================== -->
+    <section id="panel-0" class="tab-panel active">
+      <div class="lab-grid">
+        <div class="card-stack">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Activity 10.1: Vibrating Rubber Band &amp; Box Resonator (Fig. 10.2)</h2>
+                <p class="card-subtitle">Click &amp; drag the rubber band on the canvas (or press Pluck) to observe vibrations &amp; sound</p>
+              </div>
+              <span id="a1-status-badge" class="pill pill-emerald">Stopped (No Sound)</span>
+            </div>
+            <div class="canvas-box">
+              <canvas id="canvas-a1"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" style="margin-bottom:6px;">
+              <span class="section-label" style="margin-bottom:0;">Real-Time Oscilloscope: String Displacement vs. Time</span>
+              <span class="pill pill-blue mono" id="a1-osc-note">f = 220 Hz | T = 4.55 ms</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chart-a1"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card">
+            <div class="section-label">1. Apparatus Setup (Steps 2, 6 &amp; 7 + Pause &amp; Ponder 7)</div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Resonator Setup (Step 7)</span>
+              </div>
+              <div class="btn-row">
+                <button class="btn-chip active" id="a1-box-on" onclick="setA1Box(true)">Stretched Over Cardboard Box</button>
+                <button class="btn-chip" id="a1-box-off" onclick="setA1Box(false)">Held Between Two Fingers</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Rubber Band Thickness (Pause &amp; Ponder 7)</span>
+              </div>
+              <div class="btn-row">
+                <button class="btn-chip active" id="a1-thick-btn" onclick="setA1Thickness('thick')">Thick Rubber Band (Lower f)</button>
+                <button class="btn-chip" id="a1-thin-btn" onclick="setA1Thickness('thin')">Thin Rubber Band (Higher f)</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Rubber Band Tension (Step 6)</span>
+                <span id="a1-tension-val" class="mono control-val">Medium (220 Hz)</span>
+              </div>
+              <input type="range" id="a1-tension" min="1" max="3" step="1" value="2" />
+              <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#64748b; margin-top:2px;">
+                <span>1: Loosened</span>
+                <span>2: Medium</span>
+                <span>3: Tightly Stretched</span>
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-top:12px;">
+              <button id="a1-pluck-btn" class="btn btn-primary">🎸 Pluck Rubber Band</button>
+              <button id="a1-stop-btn" class="btn btn-secondary">✋ Touch &amp; Stop Vibration</button>
+            </div>
+
+            <div class="metrics-grid-3" style="margin-top:12px;">
+              <div class="metric-box blue">
+                <div class="metric-label">Frequency (ν)</div>
+                <div id="a1-freq-val" class="mono metric-value">220 Hz</div>
+                <div class="metric-sub">Oscillations / sec</div>
+              </div>
+              <div class="metric-box purple">
+                <div class="metric-label">Time Period (T = 1/ν)</div>
+                <div id="a1-period-val" class="mono metric-value">4.55 ms</div>
+                <div class="metric-sub">0.00455 s / cycle</div>
+              </div>
+              <div class="metric-box emerald">
+                <div class="metric-label">Perceived Loudness</div>
+                <div id="a1-loud-val" class="mono metric-value">68 dB</div>
+                <div id="a1-box-sub" class="metric-sub">Box amplifies air!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-label">Key Formula &amp; Acoustic Insight</div>
+            <div class="formula-card mono">
+              <div>ν = 1 / T &nbsp;|&nbsp; Higher tension or thinner band → Faster vibration (↑ ν, ↓ T)</div>
+              <div>Cardboard Box Cavity: Vibrates a large volume of enclosed air → <span class="formula-highlight">Much louder sound!</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint-box">
+        <div class="checkpoint-title"><span class="dot-indicator"></span> NCERT Activity 10.1 — Procedure &amp; Observation Checkpoints</div>
+        <div class="checkpoint-grid">
+          <ol class="checkpoint-list">
+            <li>Stretch a rubber band across an open cardboard box and pluck it: sound is heard <strong>only while the band vibrates</strong>; once stopped, sound ceases immediately.</li>
+            <li>Increase tension (stretching tighter) or switch to a <strong>thin rubber band</strong>: it vibrates faster (higher frequency, shorter time period), producing a shriller high-pitched sound.</li>
+            <li>Remove the box and pluck between two fingers: sound is still produced, but it is noticeably <strong>fainter</strong> without the hollow box acting as an acoustic resonator.</li>
+          </ol>
+          <div>
+            <strong>Key Physics Conclusion:</strong> Sound is produced by periodic to-and-fro motion (<em>vibrations</em>). Pitch increases with vibration frequency (<span class="mono">ν = 1/T</span>), while a resonating air cavity increases loudness.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACTIVITY 10.2: TUNING FORK & WATER RIPPLES
+         ===================================================================== -->
+    <section id="panel-1" class="tab-panel">
+      <div class="lab-grid">
+        <div class="card-stack">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Activity 10.2: Vibrating Tuning Fork &amp; Water Surface (Fig. 10.4)</h2>
+                <p class="card-subtitle">Strike a prong on the rubber pad, rotate near your ear, and touch the water surface to see ripples</p>
+              </div>
+              <span id="a2-status-badge" class="pill pill-blue">Tuning Fork at Rest</span>
+            </div>
+            <div class="canvas-box">
+              <canvas id="canvas-a2"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" style="margin-bottom:6px;">
+              <span class="section-label" style="margin-bottom:0;">Live Pure Tone Sine Wave (Single Frequency Source)</span>
+              <span class="pill pill-emerald mono" id="a2-wave-tag">256 Hz (C4) — Pure Sinusoid</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chart-a2"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card">
+            <div class="section-label">1. Select Tuning Fork &amp; Perform Steps 3–5</div>
+
+            <div class="control-group">
+              <div class="control-label-row"><span>Standard Laboratory Tuning Fork Frequency</span></div>
+              <div class="btn-row-3">
+                <button class="btn-chip active" id="a2-fork-256" onclick="setA2Fork(256, 'C4')">256 Hz (C4)</button>
+                <button class="btn-chip" id="a2-fork-384" onclick="setA2Fork(384, 'G4')">384 Hz (G4)</button>
+                <button class="btn-chip" id="a2-fork-512" onclick="setA2Fork(512, 'C5')">512 Hz (C5)</button>
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-bottom:12px;">
+              <button id="a2-strike-btn" class="btn btn-primary">🔨 Strike on Rubber Pad</button>
+              <button id="a2-water-btn" class="btn btn-emerald">💧 Touch Water Surface</button>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Ear Orientation Angle Around Prongs (Step 5)</span>
+                <span id="a2-angle-val" class="mono control-val">0° (Sound Heard Clearly)</span>
+              </div>
+              <input type="range" id="a2-angle" min="0" max="360" step="15" value="0" />
+            </div>
+
+            <div class="metrics-grid-3" style="margin-top:12px;">
+              <div class="metric-box blue">
+                <div class="metric-label">Fork Frequency (ν)</div>
+                <div id="a2-freq-val" class="mono metric-value">256 Hz</div>
+                <div class="metric-sub">Pure single tone</div>
+              </div>
+              <div class="metric-box purple">
+                <div class="metric-label">Wavelength in Air</div>
+                <div id="a2-lam-val" class="mono metric-value">1.34 m</div>
+                <div class="metric-sub">λ = 344 / ν</div>
+              </div>
+              <div class="metric-box cyan">
+                <div class="metric-label">Water Ripple State</div>
+                <div id="a2-rip-val" class="mono metric-value">Calm</div>
+                <div class="metric-sub">Touch prong to test</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-label">Why Use a Soft Rubber Pad?</div>
+            <div class="formula-card mono">
+              <div>• Striking on a soft rubber pad sets the steel prongs into pure, gentle oscillation without damaging the metal tines or creating harsh metallic overtones.</div>
+              <div>• Touching water transfers mechanical kinetic energy from the invisible vibrating tines into visible circular surface waves!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint-box">
+        <div class="checkpoint-title"><span class="dot-indicator"></span> NCERT Activity 10.2 — Procedure &amp; Observation Checkpoints</div>
+        <div class="checkpoint-grid">
+          <ol class="checkpoint-list">
+            <li>Hold the tuning fork by its stem, strike one prong gently on a soft rubber pad, and bring it near your ear: a pure single-frequency hum is heard.</li>
+            <li>Rotate the vibrating prongs through different orientations (0°–360°): sound is heard in all directions, showing sound radiates outward in 3D.</li>
+            <li>Touch a vibrating prong gently to a water surface: concentric ripples and tiny splashes appear immediately, proving the prongs are oscillating rapidly.</li>
+          </ol>
+          <div>
+            <strong>Key Physics Conclusion:</strong> Even when mechanical vibrations are too fast and tiny for the eye to resolve directly, touching water makes the oscillatory motion unmistakably visible.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACTIVITY 10.3: PROPAGATION THROUGH SOLIDS — CLASSROOM DESK KNOCK
+         ===================================================================== -->
+    <section id="panel-2" class="tab-panel">
+      <div class="lab-grid">
+        <div class="card-stack">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Activity 10.3: Sound Propagation Through Solids — Desk Knock (Fig. 10.5)</h2>
+                <p class="card-subtitle">Compare listening with your ear in air vs. pressed directly against a wooden or steel desk/fence</p>
+              </div>
+              <span id="a3-status-badge" class="pill pill-blue">Ready to Knock</span>
+            </div>
+            <div class="canvas-box">
+              <canvas id="canvas-a3"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" style="margin-bottom:6px;">
+              <span class="section-label" style="margin-bottom:0;">Dual-Path Arrival Timeline (Solid Path vs. Air Path)</span>
+              <span class="pill pill-emerald mono" id="a3-diff-tag">Δt = t_air − t_solid</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chart-a3"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card">
+            <div class="section-label">1. Listener Position, Material &amp; Distance (Table 10.1 &amp; Fig. 10.23)</div>
+
+            <div class="control-group">
+              <div class="control-label-row"><span>Listener Ear Position (Steps 1 &amp; 2)</span></div>
+              <div class="btn-row">
+                <button class="btn-chip" id="a3-ear-air" onclick="setA3Ear('air')">Step 1: Ear in Air</button>
+                <button class="btn-chip active" id="a3-ear-desk" onclick="setA3Ear('desk')">Step 2: Ear Pressed on Desk</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row"><span>Solid Medium Material (Table 10.1)</span></div>
+              <div class="btn-row">
+                <button class="btn-chip active" id="a3-mat-wood" onclick="setA3Material('wood')">Wooden Desk (~3800 m/s)</button>
+                <button class="btn-chip" id="a3-mat-steel" onclick="setA3Material('steel')">Steel Fence (5000 m/s)</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Distance Between Knock &amp; Listener (d)</span>
+                <span id="a3-dist-val" class="mono control-val">2.0 m (Classroom Desk)</span>
+              </div>
+              <input type="range" id="a3-dist" min="1" max="340" step="1" value="2" />
+              <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#64748b; margin-top:2px;">
+                <span>1 m (Desk)</span>
+                <span>170 m</span>
+                <span>340 m (Fig. 10.23 Fence)</span>
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-top:12px;">
+              <button id="a3-knock-btn" class="btn btn-primary">✊ Gently Knock / Scratch</button>
+              <button class="btn btn-secondary" onclick="setA3FencePreset()">Set 340 m Steel Fence (Q.11)</button>
+            </div>
+
+            <div class="metrics-grid-3" style="margin-top:12px;">
+              <div class="metric-box emerald">
+                <div class="metric-label">Solid Arrival (t_solid)</div>
+                <div id="a3-tsolid-val" class="mono metric-value">0.53 ms</div>
+                <div id="a3-vsolid-sub" class="metric-sub">v = 3800 m/s</div>
+              </div>
+              <div class="metric-box blue">
+                <div class="metric-label">Air Arrival (t_air)</div>
+                <div id="a3-tair-val" class="mono metric-value">5.88 ms</div>
+                <div class="metric-sub">v = 340 m/s</div>
+              </div>
+              <div class="metric-box amber">
+                <div class="metric-label">Heard Loudness</div>
+                <div id="a3-loud-val" class="mono metric-value">Loud &amp; Clear</div>
+                <div id="a3-sep-sub" class="metric-sub">Δt = 5.35 ms</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-label">Speed Comparison (Table 10.1)</div>
+            <div class="formula-card mono">
+              <div>• Sound travels ~11× faster in Wood and ~15× faster in Steel (5000 m/s) than in Air (340 m/s) because tightly packed solid atoms pass vibrations rapidly with minimal spreading loss!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint-box">
+        <div class="checkpoint-title"><span class="dot-indicator"></span> NCERT Activity 10.3 — Procedure &amp; Observation Checkpoints</div>
+        <div class="checkpoint-grid">
+          <ol class="checkpoint-list">
+            <li>Stand at opposite ends of a desk and have a friend gently knock or scratch it while your ear is in the air: the sound is faint.</li>
+            <li>Press one ear firmly against the desk surface and cover the other ear: the exact same gentle knock sounds <strong>much louder and clearer</strong>!</li>
+            <li>Try the <strong>340 m Steel Fence preset</strong> (Pause &amp; Ponder 11): sound arrives through steel in <span class="mono">0.068 s</span> and through air in <span class="mono">1.000 s</span> (<span class="mono">Δt = 0.932 s &gt; 0.1 s</span>, heard twice!).</li>
+          </ol>
+          <div>
+            <strong>Key Physics Conclusion:</strong> Sound propagates readily through <strong>solids</strong>, and travels much faster with less energy attenuation than through gases.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACTIVITY 10.4: PROPAGATION THROUGH LIQUIDS & VACUUM BELL JAR
+         ===================================================================== -->
+    <section id="panel-3" class="tab-panel">
+      <div class="lab-grid">
+        <div class="card-stack">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Activity 10.4: Tapping Spoons in Water &amp; Vacuum Bell Jar (Fig. 10.6 &amp; 10.7)</h2>
+                <p class="card-subtitle">Compare spoon clinks in Air, submerged in Water (1500 m/s), and inside an evacuated Vacuum Bell Jar</p>
+              </div>
+              <span id="a4-status-badge" class="pill pill-cyan">Medium: Water (1500 m/s)</span>
+            </div>
+            <div class="canvas-box">
+              <canvas id="canvas-a4"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" style="margin-bottom:6px;">
+              <span class="section-label" style="margin-bottom:0;">Wavefront Density &amp; Wavelength Across Mediums (at f = 1000 Hz)</span>
+              <span class="pill pill-blue mono" id="a4-lam-tag">λ_water = 1.50 m vs. λ_air = 0.34 m</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chart-a4"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card">
+            <div class="section-label">1. Select Experiment Setup (Fig. 10.6a, 10.6b &amp; Fig. 10.7)</div>
+
+            <div class="btn-row-3" style="margin-bottom:12px;">
+              <button class="btn-chip" id="a4-mode-air" onclick="setA4Mode('air')">10.6a: Spoons in Air</button>
+              <button class="btn-chip active" id="a4-mode-water" onclick="setA4Mode('water')">10.6b: Spoons in Water</button>
+              <button class="btn-chip" id="a4-mode-vacuum" onclick="setA4Mode('vacuum')">10.7: Vacuum Bell Jar</button>
+            </div>
+
+            <div id="a4-vacuum-ctrl" class="control-group" style="display:none;">
+              <div class="control-label-row">
+                <span>Air Pressure Inside Bell Jar (Vacuum Pump)</span>
+                <span id="a4-airpct-val" class="mono control-val">100% Air (1.0 atm)</span>
+              </div>
+              <input type="range" id="a4-airpct" min="0" max="100" step="5" value="100" />
+              <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#64748b; margin-top:2px;">
+                <span>0% (Near Vacuum — Silent!)</span>
+                <span>50%</span>
+                <span>100% Air</span>
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-top:10px;">
+              <button id="a4-tap-btn" class="btn btn-primary">🥄 Tap Spoons / Ring Bell</button>
+              <button id="a4-pump-btn" class="btn btn-rose" style="display:none;" onclick="toggleVacuumPump()">🔌 Run Vacuum Pump</button>
+            </div>
+
+            <div class="metrics-grid-3" style="margin-top:12px;">
+              <div class="metric-box cyan">
+                <div class="metric-label">Wave Speed (v)</div>
+                <div id="a4-speed-val" class="mono metric-value">1500 m/s</div>
+                <div class="metric-sub">Water at 15°C</div>
+              </div>
+              <div class="metric-box blue">
+                <div class="metric-label">Wavelength (1 kHz)</div>
+                <div id="a4-wave-val" class="mono metric-value">1.50 m</div>
+                <div class="metric-sub">λ = v / 1000 Hz</div>
+              </div>
+              <div class="metric-box emerald">
+                <div class="metric-label">Audible Reception</div>
+                <div id="a4-hear-val" class="mono metric-value">Heard Clearly</div>
+                <div id="a4-path-sub" class="metric-sub">Water → Air → Ear</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-label">Why Spacewalks Are Silent (Section 10.2.1)</div>
+            <div class="formula-card mono">
+              <div>• Sound is a <span class="formula-highlight">mechanical wave</span> that requires material particles (solid, liquid, or gas) to collide and pass compressions forward.</div>
+              <div>• In a vacuum (outer space), there are no particles to vibrate—so sound cannot propagate!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint-box">
+        <div class="checkpoint-title"><span class="dot-indicator"></span> NCERT Activity 10.4 — Procedure &amp; Observation Checkpoints</div>
+        <div class="checkpoint-grid">
+          <ol class="checkpoint-list">
+            <li>Tap two metal spoons in air (Fig. 10.6a), then submerge both spoons inside a tub of water without touching the walls and tap again (Fig. 10.6b).</li>
+            <li>You clearly hear the metallic clink: vibrations travel through <strong>water</strong> (<span class="mono">1500 m/s</span>), cross into <strong>air</strong> (<span class="mono">340 m/s</span>), and reach your ear.</li>
+            <li>Switch to the <strong>Vacuum Bell Jar</strong> (Fig. 10.7) and pump out the air: even though the hammer still visibly strikes the bell, the sound fades to complete silence!</li>
+          </ol>
+          <div>
+            <strong>Key Physics Conclusion:</strong> Sound travels through solids, liquids, and gases, but <strong>cannot travel through a vacuum</strong>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACTIVITY 10.5: LONGITUDINAL WAVES IN A SLINKY & AIR PISTON TUBE
+         ===================================================================== -->
+    <section id="panel-4" class="tab-panel">
+      <div class="lab-grid">
+        <div class="card-stack">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Activity 10.5: Longitudinal Waves in Slinky &amp; Air Tube (Fig. 10.8 &amp; 10.9)</h2>
+                <p class="card-subtitle">Watch the red marker turn oscillate in place while Compressions (C) and Rarefactions (R) travel forward</p>
+              </div>
+              <span id="a5-mode-badge" class="pill pill-blue">Continuous Oscillation</span>
+            </div>
+            <div class="canvas-box">
+              <canvas id="canvas-a5"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" style="margin-bottom:6px;">
+              <span class="section-label" style="margin-bottom:0;">Density vs. Distance Graph (Fig. 10.16 &amp; 10.18: Crest = C, Trough = R)</span>
+              <span class="pill pill-purple mono" id="a5-lam-badge">Wavelength λ = 2.00 m</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chart-a5"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card">
+            <div class="section-label">1. Slinky Driving Controls (Steps 4 &amp; 5)</div>
+
+            <div class="btn-row" style="margin-bottom:12px;">
+              <button class="btn-chip" id="a5-btn-pulse" onclick="triggerA5Pulse()">Step 4: Single Push–Pull Pulse</button>
+              <button class="btn-chip active" id="a5-btn-cont" onclick="setA5Continuous()">Step 5: Continuous Wave</button>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Oscillation Frequency (ν)</span>
+                <span id="a5-freq-val" class="mono control-val">1.50 Hz (T = 0.67 s)</span>
+              </div>
+              <input type="range" id="a5-freq" min="0.5" max="3.0" step="0.1" value="1.5" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Compression Amplitude (A)</span>
+                <span id="a5-amp-val" class="mono control-val">Medium (75%)</span>
+              </div>
+              <input type="range" id="a5-amp" min="25" max="100" step="5" value="75" />
+            </div>
+
+            <div class="btn-row" style="margin-top:12px;">
+              <button id="a5-pause-btn" class="btn btn-primary">⏸ Pause Wave</button>
+              <button class="btn btn-secondary" onclick="resetA5()">Reset Slinky</button>
+            </div>
+
+            <div class="metrics-grid-3" style="margin-top:12px;">
+              <div class="metric-box rose">
+                <div class="metric-label">Red Marker Motion</div>
+                <div id="a5-marker-val" class="mono metric-value">±0.00 m</div>
+                <div class="metric-sub">Parallel to wave (↔)</div>
+              </div>
+              <div class="metric-box blue">
+                <div class="metric-label">Wavelength (λ = v/ν)</div>
+                <div id="a5-lam-val" class="mono metric-value">2.00 m</div>
+                <div class="metric-sub">Crest-to-Crest (C–C)</div>
+              </div>
+              <div class="metric-box emerald">
+                <div class="metric-label">Wave Speed (v)</div>
+                <div class="mono metric-value">3.00 m/s</div>
+                <div class="metric-sub">Disturbance speed</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-label">Longitudinal Wave Anatomy</div>
+            <div class="formula-card mono">
+              <div>• <span class="formula-highlight">Compression (C):</span> Coils/air molecules crowded together → High density (Graph Crest).</div>
+              <div>• <span class="formula-highlight">Rarefaction (R):</span> Coils/air molecules spread apart → Low density (Graph Trough).</div>
+              <div>• Particles oscillate back &amp; forth parallel to propagation—they do NOT travel with the wave!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint-box">
+        <div class="checkpoint-title"><span class="dot-indicator"></span> NCERT Activity 10.5 — Procedure &amp; Observation Checkpoints</div>
+        <div class="checkpoint-grid">
+          <ol class="checkpoint-list">
+            <li>Mark one turn of a stretched horizontal slinky with a red marker and give the end a push-and-pull disturbance.</li>
+            <li>Observe how regions of crowded turns (<strong>Compressions</strong>) and spread-out turns (<strong>Rarefactions</strong>) travel down the slinky, while the <strong>red marker only oscillates back and forth</strong> around its rest position.</li>
+            <li>Compare the slinky turns directly with the air-filled piston tube (Fig. 10.9) and the Density–Distance sine curve (Fig. 10.16) below it.</li>
+          </ol>
+          <div>
+            <strong>Key Physics Conclusion:</strong> Sound waves are <strong>longitudinal mechanical waves</strong>: medium particles vibrate parallel to the direction of wave propagation, transferring energy without net transport of matter.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACTIVITY 10.6: ENERGY OF SOUND WAVES — JUMPING GRAINS ON MEMBRANE
+         ===================================================================== -->
+    <section id="panel-5" class="tab-panel">
+      <div class="lab-grid">
+        <div class="card-stack">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Activity 10.6: Sound Energy &amp; Jumping Grains (Fig. 10.14)</h2>
+                <p class="card-subtitle">Strike the metal plate near the stretched membrane container without touching it—watch grains jump!</p>
+              </div>
+              <span id="a6-status-badge" class="pill pill-amber">Membrane at Rest</span>
+            </div>
+            <div class="canvas-box">
+              <canvas id="canvas-a6"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" style="margin-bottom:6px;">
+              <span class="section-label" style="margin-bottom:0;">Live Plot: Membrane Vibration &amp; Peak Grain Jump Height vs. Time</span>
+              <span class="pill pill-rose mono" id="a6-energy-tag">Wave Energy E ∝ Amplitude²</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chart-a6"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card">
+            <div class="section-label">1. Sound Source Volume &amp; Grain Type (Steps 4 &amp; 5)</div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Beater Strike Force / Sound Amplitude (A)</span>
+                <span id="a6-amp-val" class="mono control-val">Loud (85 dB — High Energy)</span>
+              </div>
+              <input type="range" id="a6-amp" min="20" max="100" step="10" value="80" />
+              <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#64748b; margin-top:2px;">
+                <span>Soft Strike (Small A)</span>
+                <span>Medium</span>
+                <span>Hard Strike (Large A)</span>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row"><span>Sprinkled Grains on Stretched Sheet (Step 5)</span></div>
+              <div class="btn-row-3">
+                <button class="btn-chip" id="a6-grain-salt" onclick="setA6Grain('salt')">Fine Salt (Light)</button>
+                <button class="btn-chip active" id="a6-grain-semolina" onclick="setA6Grain('semolina')">Semolina / Rava</button>
+                <button class="btn-chip" id="a6-grain-rice" onclick="setA6Grain('rice')">Rice Grains (Heavier)</button>
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-top:12px;">
+              <button id="a6-strike-btn" class="btn btn-primary">🥁 Strike Metal Plate</button>
+              <button class="btn btn-secondary" onclick="resetA6()">Settle Grains</button>
+            </div>
+
+            <div class="metrics-grid-3" style="margin-top:12px;">
+              <div class="metric-box blue">
+                <div class="metric-label">Wave Amplitude</div>
+                <div id="a6-a-read" class="mono metric-value">80%</div>
+                <div class="metric-sub">Pressure swing</div>
+              </div>
+              <div class="metric-box amber">
+                <div class="metric-label">Relative Energy</div>
+                <div id="a6-e-read" class="mono metric-value">6.4×</div>
+                <div class="metric-sub">Proportional to A²</div>
+              </div>
+              <div class="metric-box emerald">
+                <div class="metric-label">Max Grain Jump</div>
+                <div id="a6-jump-read" class="mono metric-value">0.0 mm</div>
+                <div class="metric-sub">No physical contact!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-label">Energy Transfer Mechanism</div>
+            <div class="formula-card mono">
+              <div>Metal Plate Vibrates → Air Compressions Travel Across Gap → Rubber Membrane Vibrates → <span class="formula-highlight">Grains Gain Kinetic &amp; Potential Energy!</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint-box">
+        <div class="checkpoint-title"><span class="dot-indicator"></span> NCERT Activity 10.6 — Procedure &amp; Observation Checkpoints</div>
+        <div class="checkpoint-grid">
+          <ol class="checkpoint-list">
+            <li>Stretch a rubber/cellophane sheet tightly over a wide-mouthed bowl and sprinkle lightweight grains evenly across it.</li>
+            <li>Strike a nearby metal plate with a wooden beater <strong>without touching the bowl</strong>: sound waves travel through air, set the membrane vibrating, and make the grains jump!</li>
+            <li>Strike harder (larger amplitude): air particles undergo larger displacements, transferring more energy so the grains jump noticeably higher.</li>
+          </ol>
+          <div>
+            <strong>Key Physics Conclusion:</strong> Sound is a form of <strong>mechanical energy</strong>. Waves with larger amplitude carry more energy (<span class="mono">E ∝ A²</span>) and have higher intensity.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACTIVITY 10.7: PHYPHOX AUDIO SPECTRUM & MUSICAL NOTES (SAPTAK)
+         ===================================================================== -->
+    <section id="panel-6" class="tab-panel">
+      <div class="lab-grid">
+        <div class="card-stack">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Activity 10.7: Audio Spectrum &amp; Indian Musical Notes (Page 194)</h2>
+                <p class="card-subtitle">Play Sa, Re, Ga, Ma, Pa, Dha, Ni, Sa' and compare Pure Tone Generator vs. Human Voice / Tanpura Overtones</p>
+              </div>
+              <span id="a7-note-badge" class="pill pill-purple mono">Note: Sa (240 Hz)</span>
+            </div>
+            <div class="canvas-box">
+              <canvas id="canvas-a7"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" style="margin-bottom:6px;">
+              <span class="section-label" style="margin-bottom:0;">Oscilloscope Waveform: Pure Tone vs. Voice / Tanpura Harmonics (Fig. 10.25)</span>
+              <span class="pill pill-blue mono" id="a7-timbre-tag">Pure Sine Tone (Single f)</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chart-a7"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card">
+            <div class="section-label">1. Tap Musical Notes (Saptak) &amp; Choose Timbre Source</div>
+
+            <div class="saptak-grid">
+              <button class="note-key active" id="note-btn-0" onclick="playSaptakNote(0)"><span class="swara">Sa</span><span class="hz">240 Hz</span></button>
+              <button class="note-key" id="note-btn-1" onclick="playSaptakNote(1)"><span class="swara">Re</span><span class="hz">270 Hz</span></button>
+              <button class="note-key" id="note-btn-2" onclick="playSaptakNote(2)"><span class="swara">Ga</span><span class="hz">300 Hz</span></button>
+              <button class="note-key" id="note-btn-3" onclick="playSaptakNote(3)"><span class="swara">Ma</span><span class="hz">320 Hz</span></button>
+              <button class="note-key" id="note-btn-4" onclick="playSaptakNote(4)"><span class="swara">Pa</span><span class="hz">360 Hz</span></button>
+              <button class="note-key" id="note-btn-5" onclick="playSaptakNote(5)"><span class="swara">Dha</span><span class="hz">400 Hz</span></button>
+              <button class="note-key" id="note-btn-6" onclick="playSaptakNote(6)"><span class="swara">Ni</span><span class="hz">450 Hz</span></button>
+              <button class="note-key" id="note-btn-7" onclick="playSaptakNote(7)"><span class="swara">Sa'</span><span class="hz">480 Hz</span></button>
+            </div>
+
+            <div class="btn-row" style="margin-bottom:10px;">
+              <button class="btn-chip active" id="a7-src-tone" onclick="setA7Timbre('tone')">Mobile Tone Generator (Pure)</button>
+              <button class="btn-chip" id="a7-src-voice" onclick="setA7Timbre('voice')">Voice / Tanpura (Overtones)</button>
+            </div>
+
+            <div class="btn-row">
+              <button class="btn btn-primary" onclick="playFullSaptakScale()">▶ Play Ascending Scale (Sa → Sa')</button>
+              <button class="btn btn-secondary" onclick="stopSaptakScale()">■ Stop Tone</button>
+            </div>
+          </div>
+
+          <!-- Auto-Populating Saptak Frequency Ratio Table -->
+          <div class="card">
+            <div class="card-header" style="margin-bottom:8px;">
+              <span class="section-label" style="margin-bottom:0;">Observation Table: Frequency &amp; Ratio with 'Sa'</span>
+              <span class="pill pill-emerald">Octave Sa' / Sa = 2.00</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Note</th>
+                    <th>Freq. ν (Hz)</th>
+                    <th>Period T (ms)</th>
+                    <th>Ratio ν / ν(Sa)</th>
+                    <th>Exact Fraction</th>
+                  </tr>
+                </thead>
+                <tbody id="a7-table-body" class="mono"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint-box">
+        <div class="checkpoint-title"><span class="dot-indicator"></span> NCERT Activity 10.7 — Procedure &amp; Observation Checkpoints</div>
+        <div class="checkpoint-grid">
+          <ol class="checkpoint-list">
+            <li>Play or sing the ascending musical notes <strong>Sa, Re, Ga, Ma, Pa, Dha, Ni, Sa'</strong> while observing the Phyphox-style Audio Spectrum analyzer.</li>
+            <li>Notice that frequency increases steadily from <span class="mono">Sa (240 Hz)</span> to upper <span class="mono">Sa' (480 Hz)</span>—exactly double the fundamental frequency (one <strong>octave</strong>).</li>
+            <li>Switch between <strong>Tone Generator</strong> and <strong>Voice / Tanpura</strong>: both share the same fundamental peak frequency, while the voice/instrument adds higher harmonic overtones that create its unique <em>timbre</em> (Fig. 10.25).</li>
+          </ol>
+          <div>
+            <strong>Key Physics Conclusion:</strong> Musical intervals follow simple mathematical frequency ratios (<span class="mono">1, 9/8, 5/4, 4/3, 3/2, 5/3, 15/8, 2</span>), and an octave doubles frequency.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACTIVITY 10.8: HUMAN AUDIBLE RANGE, INFRASONIC & ULTRASONIC SWEEPER
+         ===================================================================== -->
+    <section id="panel-7" class="tab-panel">
+      <div class="lab-grid">
+        <div class="card-stack">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Activity 10.8: Audible Range, Infrasonic &amp; Ultrasonic Lab (Page 198)</h2>
+                <p class="card-subtitle">Sweep frequencies from 100 Hz → 1000 Hz in 100 Hz steps, down below 20 Hz, and up to 40 kHz</p>
+              </div>
+              <span id="a8-band-badge" class="pill pill-emerald">Human Audible Range (20 Hz – 20 kHz)</span>
+            </div>
+            <div class="canvas-box">
+              <canvas id="canvas-a8"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" style="margin-bottom:6px;">
+              <span class="section-label" style="margin-bottom:0;">Hearing Range Comparison Across Species (Infrasonic • Audible • Ultrasonic)</span>
+              <span class="pill pill-blue mono" id="a8-who-hears">Heard by: Human, Dog, Elephant</span>
+            </div>
+            <div class="chart-box">
+              <canvas id="chart-a8"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card">
+            <div class="section-label">1. Frequency Generator &amp; Activity 10.8 Step Controls</div>
+
+            <div class="control-group">
+              <div class="control-label-row">
+                <span>Generated Frequency (ν)</span>
+                <span id="a8-freq-val" class="mono control-val">400 Hz</span>
+              </div>
+              <!-- Logarithmic slider mapped 0..1000 -> 5 Hz..40,000 Hz -->
+              <input type="range" id="a8-log-slider" min="0" max="1000" step="1" value="488" />
+              <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#64748b; margin-top:2px;">
+                <span>5 Hz (Infrasonic)</span>
+                <span>20 Hz</span>
+                <span>1 kHz</span>
+                <span>20 kHz</span>
+                <span>40 kHz (Ultrasonic)</span>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label-row"><span>Step 3 &amp; 4 Quick Presets (NCERT Activity 10.8)</span></div>
+              <div class="btn-row-4" style="margin-bottom:6px;">
+                <button class="btn-chip" onclick="setA8Freq(100)">100 Hz</button>
+                <button class="btn-chip" onclick="stepA8By100(100)">+100 Hz</button>
+                <button class="btn-chip" onclick="setA8Freq(1000)">1000 Hz</button>
+                <button class="btn-chip" onclick="setA8Freq(50)">50 Hz</button>
+              </div>
+              <div class="btn-row-4">
+                <button class="btn-chip" onclick="setA8Freq(25)">25 Hz</button>
+                <button class="btn-chip" onclick="setA8Freq(15)">15 Hz (Infra)</button>
+                <button class="btn-chip" onclick="setA8Freq(15000)">15 kHz</button>
+                <button class="btn-chip" onclick="setA8Freq(28000)">28 kHz (Ultra)</button>
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-top:10px;">
+              <button id="a8-play-btn" class="btn btn-primary">▶ Play Continuous Tone</button>
+              <button id="a8-stop-btn" class="btn btn-secondary">■ Stop Tone</button>
+            </div>
+
+            <div class="metrics-grid-3" style="margin-top:12px;">
+              <div class="metric-box blue">
+                <div class="metric-label">Wavelength in Air</div>
+                <div id="a8-lam-val" class="mono metric-value">0.86 m</div>
+                <div class="metric-sub">λ = 344 m/s ÷ ν</div>
+              </div>
+              <div class="metric-box purple">
+                <div class="metric-label">Time Period (T)</div>
+                <div id="a8-per-val" class="mono metric-value">2.50 ms</div>
+                <div class="metric-sub">T = 1 / ν</div>
+              </div>
+              <div class="metric-box amber">
+                <div class="metric-label">Human Audibility</div>
+                <div id="a8-aud-val" class="mono metric-value">Audible</div>
+                <div class="metric-sub">20 Hz – 20 kHz</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-label">Wave Classification &amp; Real-World Applications</div>
+            <div class="formula-card mono">
+              <div>• <span class="formula-highlight">Infrasonic (&lt; 20 Hz):</span> Earthquakes, storms, elephants.</div>
+              <div>• <span class="formula-highlight">Audible (20 Hz – 20 kHz):</span> Human speech &amp; music (λ = 17.2 m to 1.72 cm).</div>
+              <div>• <span class="formula-highlight">Ultrasonic (&gt; 20 kHz):</span> Bat echolocation, SONAR, medical ultrasonography.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkpoint-box">
+        <div class="checkpoint-title"><span class="dot-indicator"></span> NCERT Activity 10.8 — Procedure &amp; Observation Checkpoints</div>
+        <div class="checkpoint-grid">
+          <ol class="checkpoint-list">
+            <li>Start at <strong>100 Hz</strong> and increase in steps of <strong>100 Hz up to 1000 Hz</strong>: the sound becomes progressively shriller (higher pitch) as wavelength shortens.</li>
+            <li>Set to <strong>50 Hz</strong> and reduce below <strong>20 Hz</strong>: once below 20 Hz (<em>infrasonic</em>), the human ear can no longer hear the sound even though the speaker cone still oscillates!</li>
+            <li>Test above <strong>20,000 Hz (20 kHz)</strong>: <em>ultrasonic</em> waves are inaudible to humans, yet bats, dolphins, and SONAR systems use them for echolocation.</li>
+          </ol>
+          <div>
+            <strong>Key Physics Conclusion:</strong> The human audible range spans <strong>20 Hz to 20,000 Hz (20 kHz)</strong>. Speed in air remains constant (~344 m/s at 22°C), so wavelength varies inversely with frequency (<span class="mono">λ = v / ν</span>).
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // =========================================================================
+    // WEB AUDIO API SOUND SYNTHESIZER (SAFE USER-GESTURE INITIALIZED)
+    // =========================================================================
+    let audioCtx = null;
+    let audioEnabled = true;
+    let continuousOsc = null;
+    let continuousGain = null;
+
+    function ensureAudioCtx() {
+      if (!audioEnabled) return null;
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function toggleAudioEngine() {
+      audioEnabled = !audioEnabled;
+      const btn = document.getElementById('audio-toggle-btn');
+      if (audioEnabled) {
+        btn.textContent = '🔊 Audio: ON';
+        btn.className = 'btn-audio on';
+        ensureAudioCtx();
+      } else {
+        btn.textContent = '🔇 Audio: OFF';
+        btn.className = 'btn-audio off';
+        stopContinuousTone();
+      }
+    }
+
+    function stopContinuousTone() {
+      if (continuousOsc) {
+        try { continuousOsc.stop(); continuousOsc.disconnect(); } catch (e) {}
+        continuousOsc = null;
+      }
+      if (continuousGain) {
+        try { continuousGain.disconnect(); } catch (e) {}
+        continuousGain = null;
+      }
+    }
+
+    function playPluckSound(freq, volume = 0.25, duration = 1.2) {
+      const ctx = ensureAudioCtx();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const osc2 = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now);
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(freq * 2, now);
+
+      const subGain = ctx.createGain();
+      subGain.gain.setValueAtTime(0.3, now);
+
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.linearRampToValueAtTime(volume, now + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0008, now + duration);
+
+      osc.connect(gain);
+      osc2.connect(subGain);
+      subGain.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc2.start(now);
+      osc.stop(now + duration);
+      osc2.stop(now + duration);
+    }
+
+    function playTuningForkSound(freq, duration = 2.2) {
+      const ctx = ensureAudioCtx();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.linearRampToValueAtTime(0.22, now + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0008, now + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + duration);
+    }
+
+    function playKnockSound(loudness = 0.3, pitch = 280) {
+      const ctx = ensureAudioCtx();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(pitch, now);
+      osc.frequency.exponentialRampToValueAtTime(75, now + 0.14);
+      gain.gain.setValueAtTime(Math.max(0.001, loudness), now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.17);
+    }
+
+    function playSpoonBellClink(mode, airPct = 100) {
+      const ctx = ensureAudioCtx();
+      if (!ctx) return;
+      const volScale = mode === 'vacuum' ? (airPct / 100) : 1.0;
+      if (volScale <= 0.03) return;
+      const now = ctx.currentTime;
+      const freqs = mode === 'water' ? [1150, 1780] : [1420, 2240];
+      freqs.forEach((f, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, now);
+        gain.gain.setValueAtTime(0.18 * volScale / (idx + 1), now);
+        gain.gain.exponentialRampToValueAtTime(0.0008, now + 0.55);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.56);
+      });
+    }
+
+    function startContinuousTone(freq, richOvertones = false, gainLevel = 0.16) {
+      stopContinuousTone();
+      if (freq < 20 || freq > 20000) return; // Outside human audible range
+      const ctx = ensureAudioCtx();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      continuousOsc = ctx.createOscillator();
+      continuousGain = ctx.createGain();
+      continuousOsc.type = richOvertones ? 'sawtooth' : 'sine';
+      continuousOsc.frequency.setValueAtTime(freq, now);
+
+      if (richOvertones) {
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(freq * 4, now);
+        continuousOsc.connect(filter);
+        filter.connect(continuousGain);
+      } else {
+        continuousOsc.connect(continuousGain);
+      }
+
+      continuousGain.gain.setValueAtTime(0.001, now);
+      continuousGain.gain.linearRampToValueAtTime(gainLevel, now + 0.04);
+      continuousGain.connect(ctx.destination);
+      continuousOsc.start(now);
+    }
+
+    // =========================================================================
+    // TAB NAVIGATION & CANVAS RESIZE MANAGEMENT
+    // =========================================================================
+    let activeTab = 0;
+
+    function switchTab(index) {
+      stopContinuousTone();
+      a8State.playing = false;
+      document.getElementById('a8-play-btn').textContent = '▶ Play Continuous Tone';
+      activeTab = index;
+      document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === index));
+      document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === index));
+      resizeAllCanvases();
+    }
+
+    function toggleGuide() {
+      document.getElementById('guide-drawer').classList.toggle('open');
+    }
+
+    function setupCanvas(id) {
+      const canvas = document.getElementById(id);
+      if (!canvas) return null;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return null;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { canvas, ctx, w: rect.width, h: rect.height };
+    }
+
+    function resizeAllCanvases() {
+      drawA1(); drawChartA1();
+      drawA2(); drawChartA2();
+      drawA3(); drawChartA3();
+      drawA4(); drawChartA4();
+      drawA5(); drawChartA5();
+      drawA6(); drawChartA6();
+      drawA7(); drawChartA7();
+      drawA8(); drawChartA8();
+    }
+
+    window.addEventListener('resize', resizeAllCanvases);
+
+    // =========================================================================
+    // ACTIVITY 10.1: VIBRATING RUBBER BAND ON CARDBOARD BOX
+    // =========================================================================
+    const a1State = {
+      hasBox: true,
+      thickness: 'thick', // 'thick' or 'thin'
+      tension: 2,         // 1, 2, 3
+      amp: 0,             // current oscillation amplitude (px)
+      phase: 0,
+      dragging: false,
+      dragOffset: 0,
+      waveHistory: []
+    };
+
+    function getA1Freq() {
+      const base = a1State.thickness === 'thin' ? 260 : 170;
+      const mult = a1State.tension === 1 ? 0.75 : a1State.tension === 2 ? 1.0 : 1.35;
+      return Math.round(base * mult);
+    }
+
+    function updateA1UI() {
+      const freq = getA1Freq();
+      const periodMs = (1000 / freq).toFixed(2);
+      const tNames = ['Loosened', 'Medium', 'Tightly Stretched'];
+      document.getElementById('a1-tension-val').textContent = `${tNames[a1State.tension - 1]} (${freq} Hz)`;
+      document.getElementById('a1-freq-val').textContent = `${freq} Hz`;
+      document.getElementById('a1-period-val').textContent = `${periodMs} ms`;
+      document.getElementById('a1-osc-note').textContent = `ν = ${freq} Hz | T = ${periodMs} ms`;
+      document.getElementById('a1-loud-val').textContent = a1State.hasBox ? '68 dB (Loud)' : '44 dB (Soft)';
+      document.getElementById('a1-box-sub').textContent = a1State.hasBox ? 'Box cavity amplifies' : 'No resonator box';
+    }
+
+    function setA1Box(hasBox) {
+      a1State.hasBox = hasBox;
+      document.getElementById('a1-box-on').classList.toggle('active', hasBox);
+      document.getElementById('a1-box-off').classList.toggle('active', !hasBox);
+      updateA1UI();
+      pluckA1(26);
+    }
+
+    function setA1Thickness(type) {
+      a1State.thickness = type;
+      document.getElementById('a1-thick-btn').classList.toggle('active', type === 'thick');
+      document.getElementById('a1-thin-btn').classList.toggle('active', type === 'thin');
+      updateA1UI();
+      pluckA1(26);
+    }
+
+    document.getElementById('a1-tension').addEventListener('input', (e) => {
+      a1State.tension = parseInt(e.target.value, 10);
+      updateA1UI();
+      pluckA1(24);
+    });
+
+    function pluckA1(initialAmp = 28) {
+      a1State.amp = initialAmp;
+      a1State.phase = 0;
+      const freq = getA1Freq();
+      playPluckSound(freq, a1State.hasBox ? 0.28 : 0.08, 1.3);
+      document.getElementById('a1-status-badge').textContent = 'Vibrating → Sound Produced!';
+      document.getElementById('a1-status-badge').className = 'pill pill-blue';
+    }
+
+    document.getElementById('a1-pluck-btn').addEventListener('click', () => pluckA1(28));
+    document.getElementById('a1-stop-btn').addEventListener('click', () => {
+      a1State.amp = 0;
+      document.getElementById('a1-status-badge').textContent = 'Stopped (No Sound)';
+      document.getElementById('a1-status-badge').className = 'pill pill-emerald';
+    });
+
+    // Interactive drag-to-pluck on canvas-a1
+    const cA1 = document.getElementById('canvas-a1');
+    cA1.addEventListener('mousedown', (e) => {
+      a1State.dragging = true;
+      a1State.amp = 0;
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!a1State.dragging) return;
+      const rect = cA1.getBoundingClientRect();
+      const midX = rect.left + rect.width / 2;
+      a1State.dragOffset = Math.max(-36, Math.min(36, e.clientX - midX));
+    });
+    window.addEventListener('mouseup', () => {
+      if (a1State.dragging) {
+        a1State.dragging = false;
+        const releaseAmp = Math.max(18, Math.abs(a1State.dragOffset));
+        a1State.dragOffset = 0;
+        pluckA1(releaseAmp);
+      }
+    });
+
+    function stepA1(dt) {
+      const freq = getA1Freq();
+      const visualOmega = (freq / 15) * Math.PI * 2;
+      a1State.phase += visualOmega * dt;
+
+      let yVal = 0;
+      if (a1State.dragging) {
+        yVal = a1State.dragOffset;
+      } else if (a1State.amp > 0.25) {
+        yVal = a1State.amp * Math.sin(a1State.phase);
+        a1State.amp *= Math.pow(0.24, dt);
+        if (a1State.amp <= 0.35) {
+          a1State.amp = 0;
+          document.getElementById('a1-status-badge').textContent = 'Stopped (No Sound)';
+          document.getElementById('a1-status-badge').className = 'pill pill-emerald';
+        }
+      }
+      a1State.waveHistory.push(yVal);
+      if (a1State.waveHistory.length > 180) a1State.waveHistory.shift();
+    }
+
+    function drawA1() {
+      const setup = setupCanvas('canvas-a1');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const cx = w / 2;
+      const cy = h / 2;
+      const boxW = Math.min(240, w * 0.45);
+      const boxH = Math.min(220, h * 0.68);
+
+      if (a1State.hasBox) {
+        // Open Cardboard Box Resonator (matching Fig. 10.2)
+        ctx.fillStyle = '#e11d48';
+        ctx.strokeStyle = '#881337';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.roundRect(cx - boxW / 2 - 14, cy - boxH / 2 - 14, boxW + 28, boxH + 28, 10);
+        ctx.fill();
+        ctx.stroke();
+
+        // Hollow Inner Cavity
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(cx - boxW / 2, cy - boxH / 2, boxW, boxH);
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(cx - boxW / 2, cy - boxH / 2, boxW, boxH);
+
+        ctx.fillStyle = '#64748b';
+        ctx.font = '600 11px system-ui, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Hollow Cardboard Box (Resonating Air Cavity)', cx, cy + boxH / 2 + 28);
+      } else {
+        // Two Fingers holding stretched rubber band (Step 7)
+        [cy - boxH / 2 - 10, cy + boxH / 2 + 10].forEach(fy => {
+          ctx.beginPath(); ctx.arc(cx, fy, 14, 0, Math.PI * 2);
+          ctx.fillStyle = '#fed7aa'; ctx.fill();
+          ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 2; ctx.stroke();
+        });
+        ctx.fillStyle = '#64748b';
+        ctx.font = '600 11px system-ui, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Held Between Fingers (No Resonator Box)', cx, cy + boxH / 2 + 34);
+      }
+
+      // Expanding Sound Waves when vibrating
+      if (a1State.amp > 0.5) {
+        const numRings = a1State.hasBox ? 4 : 2;
+        for (let r = 1; r <= numRings; r++) {
+          const radius = ((a1State.phase * 14 + r * 42) % 165) + 25;
+          const alpha = Math.max(0, (1 - radius / 190) * (a1State.amp / 28) * 0.65);
+          ctx.beginPath();
+          ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+        }
+      }
+
+      // Vibrating Rubber Band (Standing Wave Half-Sine)
+      const topY = cy - boxH / 2 - 10;
+      const botY = cy + boxH / 2 + 10;
+      const midDisp = a1State.dragging ? a1State.dragOffset : a1State.amp * Math.sin(a1State.phase);
+
+      // Motion blur envelope if oscillating
+      if (a1State.amp > 1) {
+        ctx.save();
+        ctx.fillStyle = 'rgba(249, 115, 22, 0.16)';
+        ctx.beginPath();
+        ctx.moveTo(cx, topY);
+        ctx.quadraticCurveTo(cx + a1State.amp * 1.4, cy, cx, botY);
+        ctx.quadraticCurveTo(cx - a1State.amp * 1.4, cy, cx, topY);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      ctx.strokeStyle = '#ea580c';
+      ctx.lineWidth = a1State.thickness === 'thick' ? 6 : 3;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(cx, topY);
+      ctx.quadraticCurveTo(cx + midDisp * 1.5, cy, cx, botY);
+      ctx.stroke();
+    }
+
+    function drawChartA1() {
+      const setup = setupCanvas('chart-a1');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const midY = h / 2;
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(20, midY); ctx.lineTo(w - 20, midY); ctx.stroke();
+      ctx.setLineDash([]);
+
+      const hist = a1State.waveHistory;
+      if (hist.length < 2) return;
+      ctx.strokeStyle = '#ea580c';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      hist.forEach((val, idx) => {
+        const x = 20 + (idx / 180) * (w - 40);
+        const y = midY - (val / 36) * (h * 0.42);
+        if (idx === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+    }
+
+    // =========================================================================
+    // ACTIVITY 10.2: TUNING FORK & WATER RIPPLES
+    // =========================================================================
+    const a2State = {
+      freq: 256,
+      note: 'C4',
+      vibAmp: 0,
+      phase: 0,
+      touchingWater: false,
+      earAngleDeg: 0,
+      ripples: []
+    };
+
+    function setA2Fork(freq, note) {
+      a2State.freq = freq;
+      a2State.note = note;
+      document.querySelectorAll('[id^="a2-fork-"]').forEach(b => b.classList.remove('active'));
+      document.getElementById(`a2-fork-${freq}`).classList.add('active');
+      const lam = (344 / freq).toFixed(2);
+      document.getElementById('a2-freq-val').textContent = `${freq} Hz`;
+      document.getElementById('a2-lam-val').textContent = `${lam} m`;
+      document.getElementById('a2-wave-tag').textContent = `${freq} Hz (${note}) — Pure Sinusoid`;
+      strikeA2Fork();
+    }
+
+    function strikeA2Fork() {
+      a2State.vibAmp = 1.0;
+      a2State.touchingWater = false;
+      playTuningForkSound(a2State.freq, 2.2);
+      document.getElementById('a2-status-badge').textContent = 'Prongs Vibrating (Pure Tone)';
+      document.getElementById('a2-status-badge').className = 'pill pill-blue';
+      document.getElementById('a2-rip-val').textContent = 'In Air';
+    }
+
+    function touchA2Water() {
+      if (a2State.vibAmp < 0.15) a2State.vibAmp = 0.85;
+      a2State.touchingWater = true;
+      document.getElementById('a2-status-badge').textContent = 'Prong Touching Water → Ripples!';
+      document.getElementById('a2-status-badge').className = 'pill pill-emerald';
+      document.getElementById('a2-rip-val').textContent = 'Rippling!';
+      for (let i = 0; i < 4; i++) {
+        a2State.ripples.push({ r: 6 + i * 14, alpha: 0.9 });
+      }
+    }
+
+    document.getElementById('a2-strike-btn').addEventListener('click', strikeA2Fork);
+    document.getElementById('a2-water-btn').addEventListener('click', touchA2Water);
+    document.getElementById('a2-angle').addEventListener('input', (e) => {
+      a2State.earAngleDeg = parseInt(e.target.value, 10);
+      document.getElementById('a2-angle-val').textContent = `${a2State.earAngleDeg}° (Sound Heard Clearly)`;
+    });
+
+    function stepA2(dt) {
+      a2State.phase += (a2State.freq / 12) * Math.PI * 2 * dt;
+      if (a2State.vibAmp > 0) {
+        a2State.vibAmp *= Math.pow(a2State.touchingWater ? 0.35 : 0.55, dt);
+        if (a2State.touchingWater && Math.random() < 0.35 && a2State.vibAmp > 0.15) {
+          a2State.ripples.push({ r: 6, alpha: a2State.vibAmp });
+        }
+        if (a2State.vibAmp < 0.03) {
+          a2State.vibAmp = 0;
+          a2State.touchingWater = false;
+          document.getElementById('a2-status-badge').textContent = 'Tuning Fork at Rest';
+          document.getElementById('a2-status-badge').className = 'pill pill-blue';
+          document.getElementById('a2-rip-val').textContent = 'Calm';
+        }
+      }
+      for (let i = a2State.ripples.length - 1; i >= 0; i--) {
+        a2State.ripples[i].r += 65 * dt;
+        a2State.ripples[i].alpha -= 0.65 * dt;
+        if (a2State.ripples[i].alpha <= 0) a2State.ripples.splice(i, 1);
+      }
+    }
+
+    function drawA2() {
+      const setup = setupCanvas('canvas-a2');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      // Left: Rubber Pad & Tuning Fork | Right: Top-down Water Bowl (matching Fig. 10.4)
+      const forkCenterX = a2State.touchingWater ? (w * 0.58) : (w * 0.28);
+      const forkCenterY = h * 0.48;
+
+      // Soft Rubber Pad on Left
+      ctx.fillStyle = '#1e293b';
+      ctx.beginPath(); ctx.roundRect(28, h * 0.36, 48, 86, 6); ctx.fill();
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '600 10px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Rubber Pad', 52, h * 0.36 + 102);
+
+      // Circular Water Bowl on Right
+      const bowlX = w * 0.68;
+      const bowlY = h * 0.50;
+      const bowlR = Math.min(115, w * 0.22);
+
+      ctx.beginPath(); ctx.arc(bowlX, bowlY, bowlR + 6, 0, Math.PI * 2);
+      ctx.fillStyle = '#94a3b8'; ctx.fill();
+      ctx.beginPath(); ctx.arc(bowlX, bowlY, bowlR, 0, Math.PI * 2);
+      ctx.fillStyle = '#cffafe'; ctx.fill();
+
+      // Concentric Water Ripples
+      const tipX = bowlX - bowlR * 0.38;
+      a2State.ripples.forEach(rip => {
+        if (rip.r < bowlR * 1.2) {
+          ctx.beginPath();
+          ctx.arc(tipX, bowlY, rip.r, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(2, 132, 199, ${Math.max(0, rip.alpha)})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      });
+
+      // Omnidirectional Sound Waves around Fork
+      if (a2State.vibAmp > 0.05) {
+        for (let k = 1; k <= 3; k++) {
+          const sr = ((a2State.phase * 10 + k * 34) % 115) + 22;
+          ctx.beginPath();
+          ctx.arc(forkCenterX + 20, forkCenterY, sr, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(37, 99, 235, ${(1 - sr / 140) * a2State.vibAmp * 0.6})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      }
+
+      // Draw U-shaped Steel Tuning Fork (horizontal orientation touching water if active)
+      const prongSpread = 16 + a2State.vibAmp * 6 * Math.sin(a2State.phase);
+      ctx.strokeStyle = '#475569';
+      ctx.lineWidth = 7;
+      ctx.lineCap = 'round';
+
+      // Stem
+      ctx.beginPath();
+      ctx.moveTo(forkCenterX - 65, forkCenterY);
+      ctx.lineTo(forkCenterX - 24, forkCenterY);
+      ctx.stroke();
+
+      // Upper & Lower Prongs
+      ctx.beginPath();
+      ctx.moveTo(forkCenterX - 24, forkCenterY);
+      ctx.quadraticCurveTo(forkCenterX - 24, forkCenterY - prongSpread, forkCenterX - 6, forkCenterY - prongSpread);
+      ctx.lineTo(forkCenterX + 54, forkCenterY - prongSpread);
+
+      ctx.moveTo(forkCenterX - 24, forkCenterY);
+      ctx.quadraticCurveTo(forkCenterX - 24, forkCenterY + prongSpread, forkCenterX - 6, forkCenterY + prongSpread);
+      ctx.lineTo(forkCenterX + 54, forkCenterY + prongSpread);
+      ctx.stroke();
+
+      // Listener Ear Icon rotating at earAngleDeg around fork
+      const earRad = (a2State.earAngleDeg * Math.PI) / 180;
+      const earX = forkCenterX + 15 + Math.cos(earRad) * 85;
+      const earY = forkCenterY + Math.sin(earRad) * 85;
+      ctx.beginPath(); ctx.arc(earX, earY, 12, 0, Math.PI * 2);
+      ctx.fillStyle = '#fed7aa'; ctx.fill();
+      ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '700 9px system-ui, sans-serif';
+      ctx.fillText('Ear', earX, earY + 3);
+    }
+
+    function drawChartA2() {
+      const setup = setupCanvas('chart-a2');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const midY = h / 2;
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(24, midY); ctx.lineTo(w - 24, midY); ctx.stroke();
+      ctx.setLineDash([]);
+
+      const cycles = (a2State.freq / 256) * 4;
+      const amp = (0.15 + a2State.vibAmp * 0.75) * (h * 0.4);
+      ctx.strokeStyle = '#2563eb';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (let i = 0; i <= 200; i++) {
+        const t = i / 200;
+        const x = 24 + t * (w - 48);
+        const y = midY - amp * Math.sin(t * cycles * Math.PI * 2 + a2State.phase);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+
+    // =========================================================================
+    // ACTIVITY 10.3: SOUND IN SOLIDS — CLASSROOM DESK KNOCK
+    // =========================================================================
+    const a3State = {
+      earMode: 'desk',   // 'air' or 'desk'
+      material: 'wood',  // 'wood' (3800 m/s) or 'steel' (5000 m/s)
+      distM: 2.0,
+      animProgress: 0,   // 0 to 1.2 (normalized to air arrival time)
+      active: false
+    };
+
+    function setA3Ear(mode) {
+      a3State.earMode = mode;
+      document.getElementById('a3-ear-air').classList.toggle('active', mode === 'air');
+      document.getElementById('a3-ear-desk').classList.toggle('active', mode === 'desk');
+      updateA3UI();
+      drawA3();
+    }
+
+    function setA3Material(mat) {
+      a3State.material = mat;
+      document.getElementById('a3-mat-wood').classList.toggle('active', mat === 'wood');
+      document.getElementById('a3-mat-steel').classList.toggle('active', mat === 'steel');
+      updateA3UI();
+      drawA3();
+      drawChartA3();
+    }
+
+    function setA3FencePreset() {
+      a3State.distM = 340;
+      a3State.material = 'steel';
+      a3State.earMode = 'desk';
+      document.getElementById('a3-dist').value = 340;
+      setA3Material('steel');
+      setA3Ear('desk');
+      knockA3Desk();
+    }
+
+    document.getElementById('a3-dist').addEventListener('input', (e) => {
+      a3State.distM = parseFloat(e.target.value);
+      updateA3UI();
+      drawA3();
+      drawChartA3();
+    });
+
+    function getA3Times() {
+      const vSolid = a3State.material === 'steel' ? 5000 : 3800;
+      const vAir = 340;
+      const tSolid = a3State.distM / vSolid;
+      const tAir = a3State.distM / vAir;
+      return { vSolid, vAir, tSolid, tAir, diff: tAir - tSolid };
+    }
+
+    function formatTime(sec) {
+      return sec < 0.05 ? `${(sec * 1000).toFixed(2)} ms` : `${sec.toFixed(3)} s`;
+    }
+
+    function updateA3UI() {
+      const { vSolid, tSolid, tAir, diff } = getA3Times();
+      document.getElementById('a3-dist-val').textContent = `${a3State.distM} m ${a3State.distM === 340 ? '(Steel Fence)' : ''}`;
+      document.getElementById('a3-tsolid-val').textContent = formatTime(tSolid);
+      document.getElementById('a3-vsolid-sub').textContent = `v = ${vSolid} m/s`;
+      document.getElementById('a3-tair-val').textContent = formatTime(tAir);
+      document.getElementById('a3-sep-sub').textContent = `Δt = ${formatTime(diff)}`;
+      document.getElementById('a3-diff-tag').textContent = `Δt = ${formatTime(diff)} (${diff >= 0.1 ? 'Heard Separately!' : 'Merged'})`;
+
+      if (a3State.earMode === 'desk') {
+        document.getElementById('a3-loud-val').textContent = 'Loud & Crisp (82%)';
+      } else {
+        document.getElementById('a3-loud-val').textContent = 'Faint (28% in Air)';
+      }
+    }
+
+    function knockA3Desk() {
+      a3State.animProgress = 0;
+      a3State.active = true;
+      const { diff } = getA3Times();
+      playKnockSound(a3State.earMode === 'desk' ? 0.35 : 0.1, 320);
+      if (diff >= 0.1) {
+        setTimeout(() => playKnockSound(0.14, 240), Math.min(1200, diff * 1000));
+      }
+      document.getElementById('a3-status-badge').textContent = 'Wave Propagating Through Solid & Air!';
+      document.getElementById('a3-status-badge').className = 'pill pill-emerald';
+    }
+
+    document.getElementById('a3-knock-btn').addEventListener('click', knockA3Desk);
+
+    function stepA3(dt) {
+      if (!a3State.active) return;
+      a3State.animProgress += dt * 0.65;
+      if (a3State.animProgress >= 1.15) {
+        a3State.active = false;
+        document.getElementById('a3-status-badge').textContent = 'Wave Arrived at Listener';
+        document.getElementById('a3-status-badge').className = 'pill pill-blue';
+      }
+    }
+
+    function drawA3() {
+      const setup = setupCanvas('canvas-a3');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const { vSolid, vAir } = getA3Times();
+      const deskY = h * 0.60;
+      const deskLeft = 75;
+      const deskRight = w - 75;
+      const deskW = deskRight - deskLeft;
+
+      // Desk / Fence Beam
+      ctx.fillStyle = a3State.material === 'steel' ? '#94a3b8' : '#d97706';
+      ctx.strokeStyle = a3State.material === 'steel' ? '#334155' : '#78350f';
+      ctx.lineWidth = 2;
+      ctx.fillRect(deskLeft, deskY, deskW, 18);
+      ctx.strokeRect(deskLeft, deskY, deskW, 18);
+
+      // Desk Legs
+      ctx.fillStyle = '#475569';
+      ctx.fillRect(deskLeft + 14, deskY + 18, 12, h - deskY - 28);
+      ctx.fillRect(deskRight - 26, deskY + 18, 12, h - deskY - 28);
+
+      // Friend Knocking on Right End
+      ctx.beginPath(); ctx.arc(deskRight + 16, deskY - 34, 14, 0, Math.PI * 2);
+      ctx.fillStyle = '#fed7aa'; ctx.fill();
+      ctx.fillStyle = '#10b981';
+      ctx.fillRect(deskRight + 6, deskY - 18, 22, 46);
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '700 11px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Knocking Hand', deskRight + 12, deskY - 54);
+
+      // Listener on Left End (Ear on Desk vs Ear in Air)
+      const earY = a3State.earMode === 'desk' ? (deskY - 12) : (deskY - 58);
+      ctx.beginPath(); ctx.arc(deskLeft - 14, earY, 15, 0, Math.PI * 2);
+      ctx.fillStyle = '#fed7aa'; ctx.fill();
+      ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = '#1d4ed8';
+      ctx.fillText(a3State.earMode === 'desk' ? 'Ear on Desk' : 'Ear in Air', deskLeft - 10, earY - 22);
+
+      // Dual Wavefronts when active
+      if (a3State.active || a3State.animProgress > 0) {
+        const airFrac = Math.min(1, a3State.animProgress);
+        const solidFrac = Math.min(1, a3State.animProgress * (vSolid / vAir));
+
+        // Fast Solid Compression Wave inside Desk (Emerald)
+        const solidX = deskRight - solidFrac * deskW;
+        ctx.fillStyle = '#059669';
+        ctx.fillRect(solidX - 6, deskY + 2, 12, 14);
+        ctx.font = '700 11px system-ui, sans-serif';
+        ctx.fillText(`Solid Wave (${vSolid} m/s)`, Math.max(deskLeft + 65, solidX), deskY + 34);
+
+        // Slower Spherical Air Wavefront (Blue arcs)
+        const airRadius = airFrac * deskW;
+        ctx.beginPath();
+        ctx.arc(deskRight, deskY - 6, airRadius, Math.PI, Math.PI * 1.35);
+        ctx.strokeStyle = '#2563eb';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        ctx.fillStyle = '#1d4ed8';
+        ctx.fillText(`Air Wave (${vAir} m/s)`, Math.max(deskLeft + 65, deskRight - airRadius), deskY - 46);
+      }
+    }
+
+    function drawChartA3() {
+      const setup = setupCanvas('chart-a3');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      const { tSolid, tAir } = getA3Times();
+      ctx.clearRect(0, 0, w, h);
+
+      const pad = { l: 95, r: 30, t: 24, b: 28 };
+      const pw = w - pad.l - pad.r;
+      const maxT = Math.max(0.001, tAir * 1.15);
+
+      ctx.font = '700 11px system-ui, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#059669';
+      ctx.fillText('Solid Path:', pad.l - 10, 56);
+      ctx.fillStyle = '#2563eb';
+      ctx.fillText('Air Path:', pad.l - 10, 118);
+
+      // Solid Bar
+      const solidW = Math.max(6, (tSolid / maxT) * pw);
+      ctx.fillStyle = '#059669';
+      ctx.beginPath(); ctx.roundRect(pad.l, 38, solidW, 26, 6); ctx.fill();
+      ctx.textAlign = 'left';
+      ctx.fillText(`${formatTime(tSolid)} (Arrives First!)`, pad.l + solidW + 8, 55);
+
+      // Air Bar
+      const airW = (tAir / maxT) * pw;
+      ctx.fillStyle = '#2563eb';
+      ctx.beginPath(); ctx.roundRect(pad.l, 100, airW, 26, 6); ctx.fill();
+      ctx.fillText(`${formatTime(tAir)}`, pad.l + Math.min(pw - 70, airW + 8), 117);
+    }
+
+    // =========================================================================
+    // ACTIVITY 10.4: WATER TUB & VACUUM BELL JAR
+    // =========================================================================
+    const a4State = {
+      mode: 'water', // 'air', 'water', 'vacuum'
+      airPct: 100,
+      pumping: false,
+      wavePhase: 0,
+      pulseActive: 0
+    };
+
+    function setA4Mode(mode) {
+      a4State.mode = mode;
+      a4State.pumping = false;
+      document.querySelectorAll('[id^="a4-mode-"]').forEach(b => b.classList.remove('active'));
+      document.getElementById(`a4-mode-${mode}`).classList.add('active');
+
+      const isVac = mode === 'vacuum';
+      document.getElementById('a4-vacuum-ctrl').style.display = isVac ? 'block' : 'none';
+      document.getElementById('a4-pump-btn').style.display = isVac ? 'block' : 'none';
+
+      updateA4UI();
+      triggerA4Tap();
+    }
+
+    document.getElementById('a4-airpct').addEventListener('input', (e) => {
+      a4State.airPct = parseInt(e.target.value, 10);
+      a4State.pumping = false;
+      updateA4UI();
+    });
+
+    function toggleVacuumPump() {
+      a4State.pumping = !a4State.pumping;
+      if (a4State.airPct === 0) a4State.airPct = 100;
+      a4State.pulseActive = 1.0;
+    }
+
+    function updateA4UI() {
+      const m = a4State.mode;
+      let speed = 340;
+      let lam = '0.34 m';
+      let hear = 'Heard Clearly';
+      let path = 'Air → Ear';
+
+      if (m === 'water') {
+        speed = 1500;
+        lam = '1.50 m';
+        hear = 'Heard Clearly';
+        path = 'Water → Air → Ear';
+        document.getElementById('a4-status-badge').textContent = 'Medium: Water (1500 m/s)';
+        document.getElementById('a4-status-badge').className = 'pill pill-cyan';
+      } else if (m === 'air') {
+        speed = 340;
+        lam = '0.34 m';
+        hear = 'Heard Clearly';
+        path = 'Air → Ear';
+        document.getElementById('a4-status-badge').textContent = 'Medium: Air (340 m/s)';
+        document.getElementById('a4-status-badge').className = 'pill pill-blue';
+      } else {
+        speed = a4State.airPct > 5 ? 340 : 0;
+        lam = a4State.airPct > 5 ? '0.34 m' : 'None (No Medium)';
+        hear = a4State.airPct <= 5 ? 'SILENT (Vacuum!)' : `${a4State.airPct}% Loudness`;
+        path = a4State.airPct <= 5 ? 'No particles to vibrate!' : 'Thinned Air inside Jar';
+        document.getElementById('a4-airpct-val').textContent = `${a4State.airPct}% Air`;
+        document.getElementById('a4-status-badge').textContent = a4State.airPct <= 5 ? 'Near Vacuum — No Sound!' : `Bell Jar (${a4State.airPct}% Air)`;
+        document.getElementById('a4-status-badge').className = a4State.airPct <= 5 ? 'pill pill-rose' : 'pill pill-amber';
+      }
+
+      document.getElementById('a4-speed-val').textContent = `${speed} m/s`;
+      document.getElementById('a4-wave-val').textContent = lam;
+      document.getElementById('a4-hear-val').textContent = hear;
+      document.getElementById('a4-path-sub').textContent = path;
+      document.getElementById('a4-lam-tag').textContent = m === 'water'
+        ? 'λ_water = 1.50 m → λ_air = 0.34 m (at 1 kHz)'
+        : m === 'air' ? 'λ_air = 0.34 m (at 1 kHz)' : `Air Density: ${a4State.airPct}%`;
+    }
+
+    function triggerA4Tap() {
+      a4State.pulseActive = 1.0;
+      playSpoonBellClink(a4State.mode, a4State.airPct);
+    }
+
+    document.getElementById('a4-tap-btn').addEventListener('click', triggerA4Tap);
+
+    function stepA4(dt) {
+      a4State.wavePhase += 8 * dt;
+      if (a4State.pumping && a4State.mode === 'vacuum') {
+        a4State.airPct = Math.max(0, Math.round(a4State.airPct - 18 * dt));
+        document.getElementById('a4-airpct').value = a4State.airPct;
+        a4State.pulseActive = 0.8;
+        updateA4UI();
+        if (a4State.airPct === 0) a4State.pumping = false;
+      }
+      if (a4State.pulseActive > 0) {
+        a4State.pulseActive = Math.max(0, a4State.pulseActive - 0.55 * dt);
+      }
+    }
+
+    function drawA4() {
+      const setup = setupCanvas('canvas-a4');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const cx = w * 0.45;
+      const cy = h * 0.54;
+
+      if (a4State.mode === 'vacuum') {
+        // Glass Bell Jar on Base (matching Fig. 10.7)
+        const jarW = 160;
+        const jarH = 210;
+        ctx.fillStyle = '#334155';
+        ctx.fillRect(cx - jarW / 2 - 16, cy + jarH / 2 - 20, jarW + 32, 16);
+
+        // Air particle dots inside bell jar proportional to airPct
+        const numDots = Math.round((a4State.airPct / 100) * 140);
+        ctx.fillStyle = 'rgba(37, 99, 235, 0.38)';
+        for (let i = 0; i < numDots; i++) {
+          const px = cx - jarW / 2 + 12 + ((i * 53) % (jarW - 24));
+          const py = cy - jarH / 2 + 24 + ((i * 37) % (jarH - 52));
+          ctx.beginPath(); ctx.arc(px, py, 2, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // Bell Jar Glass Outline
+        ctx.strokeStyle = '#64748b';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(cx, cy - 20, jarW / 2, Math.PI, 0);
+        ctx.lineTo(cx + jarW / 2, cy + jarH / 2 - 20);
+        ctx.lineTo(cx - jarW / 2, cy + jarH / 2 - 20);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Electric Bell Inside
+        ctx.beginPath(); ctx.arc(cx, cy - 10, 22, 0, Math.PI * 2);
+        ctx.fillStyle = '#f59e0b'; ctx.fill();
+        ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2; ctx.stroke();
+
+        // Sound waves fade out as airPct approaches 0
+        if (a4State.pulseActive > 0 && a4State.airPct > 5) {
+          const alpha = a4State.pulseActive * (a4State.airPct / 100);
+          for (let r = 1; r <= 3; r++) {
+            ctx.beginPath();
+            ctx.arc(cx, cy - 10, 28 + r * 22, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(37, 99, 235, ${alpha * 0.7})`;
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+          }
+        }
+      } else {
+        // Glass Water Tub (matching Fig. 10.6a & 10.6b)
+        const tubW = 240;
+        const tubH = 190;
+        const waterTop = cy - 10;
+
+        // Water Fill
+        ctx.fillStyle = 'rgba(14, 165, 233, 0.25)';
+        ctx.fillRect(cx - tubW / 2, waterTop, tubW, tubH / 2 + 10);
+
+        // Tub Glass Walls
+        ctx.strokeStyle = '#0f172a';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(cx - tubW / 2, cy - tubH / 2);
+        ctx.lineTo(cx - tubW / 2, cy + tubH / 2);
+        ctx.lineTo(cx + tubW / 2, cy + tubH / 2);
+        ctx.lineTo(cx + tubW / 2, cy - tubH / 2);
+        ctx.stroke();
+
+        // Two Metal Spoons (submerged in 'water', above tub in 'air')
+        const spoonY = a4State.mode === 'water' ? (cy + 36) : (cy - tubH / 2 - 26);
+        const clinkGap = a4State.pulseActive > 0.7 ? 2 : 12;
+
+        ctx.fillStyle = '#cbd5e1';
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 2;
+        // Upper spoon
+        ctx.fillRect(cx - 80, spoonY - clinkGap - 4, 95, 5);
+        ctx.beginPath(); ctx.ellipse(cx + 22, spoonY - clinkGap - 2, 16, 7, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        // Lower spoon
+        ctx.fillRect(cx - 80, spoonY + clinkGap, 95, 5);
+        ctx.beginPath(); ctx.ellipse(cx + 22, spoonY + clinkGap + 2, 16, 7, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        // Expanding Wavefronts
+        if (a4State.pulseActive > 0) {
+          for (let r = 1; r <= 4; r++) {
+            const rad = ((1 - a4State.pulseActive) * 180 + r * 32);
+            ctx.beginPath();
+            ctx.arc(cx + 22, spoonY, rad, -Math.PI * 0.7, Math.PI * 0.2);
+            ctx.strokeStyle = `rgba(2, 132, 199, ${a4State.pulseActive * 0.8})`;
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Listener Ear on Right
+      const earX = w - 58;
+      const earY = h * 0.34;
+      ctx.beginPath(); ctx.arc(earX, earY, 16, 0, Math.PI * 2);
+      ctx.fillStyle = '#fed7aa'; ctx.fill();
+      ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '700 10px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Listener Ear', earX, earY + 28);
+    }
+
+    function drawChartA4() {
+      const setup = setupCanvas('chart-a4');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const midY = h / 2;
+      const splitX = w * 0.55;
+
+      if (a4State.mode === 'water') {
+        // Water-to-Air interface showing wavelength shortening from 1.50 m to 0.34 m!
+        ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+        ctx.fillRect(20, 16, splitX - 20, h - 32);
+        ctx.strokeStyle = '#0284c7';
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(splitX, 16); ctx.lineTo(splitX, h - 16); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#0369a1';
+        ctx.font = '700 10px system-ui, sans-serif';
+        ctx.fillText('In Water (v = 1500 m/s, Long λ)', 28, 28);
+        ctx.fillStyle = '#1d4ed8';
+        ctx.fillText('In Air (v = 340 m/s, Short λ)', splitX + 10, 28);
+
+        ctx.strokeStyle = '#0284c7';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        for (let x = 20; x <= w - 20; x++) {
+          const k = x < splitX ? 0.045 : 0.19;
+          const phaseOffset = x < splitX ? (x - 20) * 0.045 : ((splitX - 20) * 0.045 + (x - splitX) * 0.19);
+          const y = midY - 48 * Math.sin(phaseOffset - a4State.wavePhase);
+          if (x === 20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      } else {
+        const amp = a4State.mode === 'vacuum' ? (a4State.airPct / 100) * 52 : 52;
+        ctx.strokeStyle = '#2563eb';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        for (let x = 20; x <= w - 20; x++) {
+          const y = midY - amp * Math.sin((x - 20) * 0.12 - a4State.wavePhase);
+          if (x === 20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+    }
+
+    // =========================================================================
+    // ACTIVITY 10.5: LONGITUDINAL WAVES IN A SLINKY & AIR PISTON TUBE
+    // =========================================================================
+    const a5State = {
+      continuous: true,
+      freq: 1.5,
+      ampPct: 75,
+      paused: false,
+      time: 0,
+      pulseStartTime: -10
+    };
+
+    function setA5Continuous() {
+      a5State.continuous = true;
+      document.getElementById('a5-btn-cont').classList.add('active');
+      document.getElementById('a5-btn-pulse').classList.remove('active');
+      document.getElementById('a5-mode-badge').textContent = 'Continuous Oscillation';
+    }
+
+    function triggerA5Pulse() {
+      a5State.continuous = false;
+      a5State.pulseStartTime = a5State.time;
+      document.getElementById('a5-btn-pulse').classList.add('active');
+      document.getElementById('a5-btn-cont').classList.remove('active');
+      document.getElementById('a5-mode-badge').textContent = 'Single Push–Pull Pulse';
+    }
+
+    function resetA5() {
+      a5State.time = 0;
+      a5State.paused = false;
+      document.getElementById('a5-pause-btn').textContent = '⏸ Pause Wave';
+      setA5Continuous();
+    }
+
+    document.getElementById('a5-freq').addEventListener('input', (e) => {
+      a5State.freq = parseFloat(e.target.value);
+      const lam = (3.0 / a5State.freq).toFixed(2);
+      document.getElementById('a5-freq-val').textContent = `${a5State.freq.toFixed(1)} Hz (T = ${(1 / a5State.freq).toFixed(2)} s)`;
+      document.getElementById('a5-lam-val').textContent = `${lam} m`;
+      document.getElementById('a5-lam-badge').textContent = `Wavelength λ = ${lam} m`;
+    });
+
+    document.getElementById('a5-amp').addEventListener('input', (e) => {
+      a5State.ampPct = parseInt(e.target.value, 10);
+      document.getElementById('a5-amp-val').textContent = `${a5State.ampPct}%`;
+    });
+
+    document.getElementById('a5-pause-btn').addEventListener('click', () => {
+      a5State.paused = !a5State.paused;
+      document.getElementById('a5-pause-btn').textContent = a5State.paused ? '▶ Resume Wave' : '⏸ Pause Wave';
+    });
+
+    function getA5Displacement(xNorm, t) {
+      // xNorm in [0, 1] representing 6.0 m slinky length; v = 3.0 m/s
+      const xMeters = xNorm * 6.0;
+      const vWave = 3.0;
+      const ampM = (a5State.ampPct / 100) * 0.22;
+      const omega = 2 * Math.PI * a5State.freq;
+      const k = omega / vWave;
+
+      if (a5State.continuous) {
+        return ampM * Math.sin(omega * t - k * xMeters);
+      } else {
+        const tau = (t - a5State.pulseStartTime) - xMeters / vWave;
+        if (tau >= 0 && tau <= (1 / a5State.freq)) {
+          return ampM * Math.sin(omega * tau);
+        }
+        return 0;
+      }
+    }
+
+    function stepA5(dt) {
+      if (a5State.paused) return;
+      a5State.time += dt;
+      const markerDisp = getA5Displacement(0.35, a5State.time);
+      document.getElementById('a5-marker-val').textContent = `${markerDisp >= 0 ? '+' : ''}${markerDisp.toFixed(2)} m`;
+    }
+
+    function drawA5() {
+      const setup = setupCanvas('canvas-a5');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const leftX = 56;
+      const rightX = w - 44;
+      const spanW = rightX - leftX;
+
+      // 1. Top Half: Horizontal Slinky with Highlighted Red Marker Coil (Fig. 10.8)
+      const slinkyY = h * 0.30;
+      const numCoils = 58;
+      const coilR = 24;
+
+      for (let i = 0; i <= numCoils; i++) {
+        const u = i / numCoils;
+        const dispPx = (getA5Displacement(u, a5State.time) / 6.0) * spanW;
+        const cx = leftX + u * spanW + dispPx;
+        const isMarker = i === 20; // Red marked turn!
+
+        ctx.beginPath();
+        ctx.ellipse(cx, slinkyY, 7, coilR, 0, 0, Math.PI * 2);
+        ctx.strokeStyle = isMarker ? '#e11d48' : '#475569';
+        ctx.lineWidth = isMarker ? 4 : 1.8;
+        ctx.stroke();
+
+        if (isMarker) {
+          ctx.fillStyle = '#be123c';
+          ctx.font = '800 10.5px system-ui, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('Red Marker Turn (↔)', cx, slinkyY - coilR - 10);
+        }
+      }
+
+      // 2. Bottom Half: Air Particle Piston Tube (Fig. 10.9)
+      const tubeTop = h * 0.56;
+      const tubeH = h * 0.30;
+      ctx.fillStyle = '#f1f5f9';
+      ctx.fillRect(leftX, tubeTop, spanW, tubeH);
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(leftX, tubeTop); ctx.lineTo(rightX, tubeTop);
+      ctx.moveTo(leftX, tubeTop + tubeH); ctx.lineTo(rightX, tubeTop + tubeH);
+      ctx.stroke();
+
+      // Oscillating Piston on Left
+      const pistonDisp = (getA5Displacement(0, a5State.time) / 6.0) * spanW;
+      ctx.fillStyle = '#2563eb';
+      ctx.fillRect(leftX + pistonDisp - 12, tubeTop + 2, 14, tubeH - 4);
+      ctx.fillRect(leftX + pistonDisp - 34, tubeTop + tubeH / 2 - 4, 22, 8);
+
+      // Air Particles inside Tube
+      ctx.fillStyle = '#0284c7';
+      const cols = 42;
+      const rows = 5;
+      for (let c = 1; c <= cols; c++) {
+        const u = c / cols;
+        const dx = (getA5Displacement(u, a5State.time) / 6.0) * spanW;
+        for (let r = 0; r < rows; r++) {
+          const px = leftX + u * spanW + dx;
+          const py = tubeTop + 10 + (r / (rows - 1)) * (tubeH - 20);
+          ctx.beginPath(); ctx.arc(px, py, 2.2, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+    }
+
+    function drawChartA5() {
+      const setup = setupCanvas('chart-a5');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const leftX = 56;
+      const rightX = w - 44;
+      const spanW = rightX - leftX;
+      const midY = h / 2;
+
+      // Average Density Dashed Line (Fig. 10.16b)
+      ctx.strokeStyle = '#334155';
+      ctx.setLineDash([5, 4]);
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(leftX, midY); ctx.lineTo(rightX, midY); ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#475569';
+      ctx.font = '600 10px system-ui, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText('Avg Density', leftX - 6, midY + 3);
+
+      // Density variation Δρ ∝ -∂s/∂x
+      ctx.strokeStyle = '#2563eb';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      const du = 0.005;
+      for (let i = 0; i <= 200; i++) {
+        const u = i / 200;
+        const d1 = getA5Displacement(Math.max(0, u - du), a5State.time);
+        const d2 = getA5Displacement(Math.min(1, u + du), a5State.time);
+        const strain = -(d2 - d1) / (2 * du * 6.0);
+        const x = leftX + u * spanW;
+        const y = midY - Math.max(-1, Math.min(1, strain * 2.6)) * (h * 0.38);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Label Crest (C) and Trough (R)
+      ctx.fillStyle = '#7c3aed';
+      ctx.font = '800 11px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Crest = Compression (C)', leftX + spanW * 0.25, 18);
+      ctx.fillText('Trough = Rarefaction (R)', leftX + spanW * 0.75, h - 8);
+    }
+
+    // =========================================================================
+    // ACTIVITY 10.6: ENERGY OF SOUND WAVES — JUMPING GRAINS ON MEMBRANE
+    // =========================================================================
+    const a6State = {
+      ampPct: 80,
+      grainType: 'semolina',
+      memVib: 0,
+      phase: 0,
+      grains: [],
+      maxJumpMm: 0,
+      history: []
+    };
+
+    function initA6Grains() {
+      a6State.grains = [];
+      for (let i = 0; i < 36; i++) {
+        a6State.grains.push({
+          rx: (Math.random() - 0.5) * 0.78, // relative x on membrane [-0.4, 0.4]
+          y: 0,
+          vy: 0,
+          color: i % 3 === 0 ? '#e11d48' : i % 3 === 1 ? '#f59e0b' : '#2563eb'
+        });
+      }
+    }
+
+    function setA6Grain(type) {
+      a6State.grainType = type;
+      document.querySelectorAll('[id^="a6-grain-"]').forEach(b => b.classList.remove('active'));
+      document.getElementById(`a6-grain-${type}`).classList.add('active');
+    }
+
+    document.getElementById('a6-amp').addEventListener('input', (e) => {
+      a6State.ampPct = parseInt(e.target.value, 10);
+      const relE = ((a6State.ampPct / 31.6) ** 2).toFixed(1);
+      document.getElementById('a6-amp-val').textContent = `${a6State.ampPct}% (${a6State.ampPct >= 70 ? 'Loud' : a6State.ampPct >= 40 ? 'Medium' : 'Soft'})`;
+      document.getElementById('a6-a-read').textContent = `${a6State.ampPct}%`;
+      document.getElementById('a6-e-read').textContent = `${relE}×`;
+    });
+
+    function strikeA6Plate() {
+      a6State.memVib = a6State.ampPct / 100;
+      a6State.maxJumpMm = 0;
+      playKnockSound(0.15 + (a6State.ampPct / 100) * 0.25, 420);
+      document.getElementById('a6-status-badge').textContent = 'Sound Wave Transferred Energy → Grains Jumping!';
+      document.getElementById('a6-status-badge').className = 'pill pill-emerald';
+    }
+
+    function resetA6() {
+      a6State.memVib = 0;
+      a6State.maxJumpMm = 0;
+      initA6Grains();
+      document.getElementById('a6-jump-read').textContent = '0.0 mm';
+      document.getElementById('a6-status-badge').textContent = 'Membrane at Rest';
+      document.getElementById('a6-status-badge').className = 'pill pill-amber';
+    }
+
+    document.getElementById('a6-strike-btn').addEventListener('click', strikeA6Plate);
+
+    function stepA6(dt) {
+      a6State.phase += 28 * dt;
+      const massFactor = a6State.grainType === 'salt' ? 1.25 : a6State.grainType === 'semolina' ? 1.0 : 0.72;
+
+      if (a6State.memVib > 0.02) {
+        a6State.memVib *= Math.pow(0.32, dt);
+        a6State.grains.forEach(g => {
+          if (g.y <= 1 && Math.random() < 0.45) {
+            g.vy = (120 + a6State.memVib * 240) * massFactor * (0.7 + Math.random() * 0.5);
+          }
+        });
+      } else {
+        a6State.memVib = 0;
+      }
+
+      let curMaxY = 0;
+      a6State.grains.forEach(g => {
+        if (g.y > 0 || g.vy > 0) {
+          g.y += g.vy * dt;
+          g.vy -= 520 * dt; // gravity
+          if (g.y <= 0) {
+            g.y = 0;
+            g.vy = 0;
+          }
+          if (g.y > curMaxY) curMaxY = g.y;
+        }
+      });
+
+      if (curMaxY * 0.35 > a6State.maxJumpMm) {
+        a6State.maxJumpMm = curMaxY * 0.35;
+        document.getElementById('a6-jump-read').textContent = `${a6State.maxJumpMm.toFixed(1)} mm`;
+      }
+
+      const memY = a6State.memVib * 12 * Math.sin(a6State.phase);
+      a6State.history.push({ m: memY, j: curMaxY * 0.35 });
+      if (a6State.history.length > 160) a6State.history.shift();
+    }
+
+    function drawA6() {
+      const setup = setupCanvas('canvas-a6');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      // Left: Wide-Mouthed Container with Stretched Rubber Membrane (Fig. 10.14)
+      const bowlX = w * 0.34;
+      const bowlTopY = h * 0.54;
+      const bowlW = 190;
+      const bowlH = 115;
+
+      // Bowl Body
+      ctx.fillStyle = 'rgba(148, 163, 184, 0.25)';
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(bowlX - bowlW / 2, bowlTopY);
+      ctx.lineTo(bowlX - bowlW * 0.36, bowlTopY + bowlH);
+      ctx.lineTo(bowlX + bowlW * 0.36, bowlTopY + bowlH);
+      ctx.lineTo(bowlX + bowlW / 2, bowlTopY);
+      ctx.stroke();
+
+      // Vibrating Stretched Membrane
+      const memDisp = a6State.memVib * 14 * Math.sin(a6State.phase);
+      ctx.strokeStyle = '#e11d48';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(bowlX - bowlW / 2 - 4, bowlTopY);
+      ctx.quadraticCurveTo(bowlX, bowlTopY + memDisp, bowlX + bowlW / 2 + 4, bowlTopY);
+      ctx.stroke();
+
+      // Colorful Grains Jumping Above Membrane
+      const grainRadius = a6State.grainType === 'salt' ? 2.2 : a6State.grainType === 'semolina' ? 3.2 : 4.2;
+      a6State.grains.forEach(g => {
+        const gx = bowlX + g.rx * bowlW;
+        const localMemY = bowlTopY + memDisp * (1 - (g.rx * 2) ** 2) * 0.5;
+        const gy = localMemY - grainRadius - g.y;
+        ctx.fillStyle = g.color;
+        ctx.beginPath();
+        ctx.arc(gx, gy, grainRadius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Right: Steel Plate & Wooden Beater (No contact with bowl!)
+      const plateX = w * 0.74;
+      const plateY = h * 0.36;
+      ctx.fillStyle = '#cbd5e1';
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.ellipse(plateX, plateY, 16, 62, -0.25, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Wooden Beater
+      ctx.strokeStyle = '#92400e';
+      ctx.lineWidth = 7;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(plateX + 55, plateY - 48);
+      ctx.lineTo(plateX + 12, plateY - 8);
+      ctx.stroke();
+
+      // Sound Waves Travelling Through Air from Plate to Membrane
+      if (a6State.memVib > 0.04) {
+        for (let k = 1; k <= 4; k++) {
+          const r = 24 + k * 28;
+          ctx.beginPath();
+          ctx.arc(plateX - 10, plateY, r, Math.PI * 0.72, Math.PI * 1.15);
+          ctx.strokeStyle = `rgba(37, 99, 235, ${a6State.memVib * 0.85})`;
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+        }
+      }
+
+      ctx.fillStyle = '#475569';
+      ctx.font = '600 11px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Air Gap (No Physical Contact)', (bowlX + plateX) / 2, h - 14);
+    }
+
+    function drawChartA6() {
+      const setup = setupCanvas('chart-a6');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const baseLine = h - 32;
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(24, baseLine); ctx.lineTo(w - 24, baseLine); ctx.stroke();
+
+      const hist = a6State.history;
+      if (hist.length < 2) return;
+
+      // Peak Grain Jump Height (Amber)
+      ctx.strokeStyle = '#d97706';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      hist.forEach((pt, i) => {
+        const x = 24 + (i / 160) * (w - 48);
+        const y = baseLine - Math.min(h - 48, pt.j * 2.5);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+    }
+
+    // =========================================================================
+    // ACTIVITY 10.7: PHYPHOX AUDIO SPECTRUM & MUSICAL NOTES (SAPTAK)
+    // =========================================================================
+    const saptakNotes = [
+      { swara: 'Sa',  freq: 240, frac: '1' },
+      { swara: 'Re',  freq: 270, frac: '9/8' },
+      { swara: 'Ga',  freq: 300, frac: '5/4' },
+      { swara: 'Ma',  freq: 320, frac: '4/3' },
+      { swara: 'Pa',  freq: 360, frac: '3/2' },
+      { swara: 'Dha', freq: 400, frac: '5/3' },
+      { swara: 'Ni',  freq: 450, frac: '15/8' },
+      { swara: "Sa'", freq: 480, frac: '2 (Octave)' }
+    ];
+
+    const a7State = {
+      activeIdx: 0,
+      timbre: 'tone', // 'tone' or 'voice'
+      playedSet: new Set([0]),
+      scaleTimer: null,
+      phase: 0
+    };
+
+    function playSaptakNote(idx) {
+      a7State.activeIdx = idx;
+      a7State.playedSet.add(idx);
+      const note = saptakNotes[idx];
+
+      document.querySelectorAll('.note-key').forEach((btn, i) => btn.classList.toggle('active', i === idx));
+      document.getElementById('a7-note-badge').textContent = `Note: ${note.swara} (${note.freq} Hz)`;
+
+      startContinuousTone(note.freq, a7State.timbre === 'voice', 0.16);
+      renderA7Table();
+      drawA7();
+      drawChartA7();
+    }
+
+    function setA7Timbre(mode) {
+      a7State.timbre = mode;
+      document.getElementById('a7-src-tone').classList.toggle('active', mode === 'tone');
+      document.getElementById('a7-src-voice').classList.toggle('active', mode === 'voice');
+      document.getElementById('a7-timbre-tag').textContent = mode === 'tone'
+        ? 'Pure Sine Tone (Single Fundamental f)'
+        : 'Voice / Tanpura (Fundamental + Overtones)';
+      playSaptakNote(a7State.activeIdx);
+    }
+
+    function playFullSaptakScale() {
+      stopSaptakScale();
+      let step = 0;
+      playSaptakNote(0);
+      a7State.scaleTimer = setInterval(() => {
+        step++;
+        if (step >= saptakNotes.length) {
+          stopSaptakScale();
+          return;
+        }
+        playSaptakNote(step);
+      }, 480);
+    }
+
+    function stopSaptakScale() {
+      if (a7State.scaleTimer) {
+        clearInterval(a7State.scaleTimer);
+        a7State.scaleTimer = null;
+      }
+      stopContinuousTone();
+    }
+
+    function renderA7Table() {
+      const tbody = document.getElementById('a7-table-body');
+      tbody.innerHTML = saptakNotes.map((n, idx) => {
+        const played = a7State.playedSet.has(idx);
+        const ratio = (n.freq / 240).toFixed(3);
+        const periodMs = (1000 / n.freq).toFixed(2);
+        return `
+          <tr style="background:${idx === a7State.activeIdx ? '#eff6ff' : ''}; cursor:pointer;" onclick="playSaptakNote(${idx})">
+            <td style="font-family:var(--font-sans); font-weight:800; color:#1d4ed8;">${n.swara}</td>
+            <td>${played ? n.freq + ' Hz' : '—'}</td>
+            <td>${played ? periodMs + ' ms' : '—'}</td>
+            <td style="color:#059669; font-weight:700;">${played ? ratio : '—'}</td>
+            <td>${played ? n.frac : 'Tap key'}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function stepA7(dt) {
+      a7State.phase += 10 * dt;
+    }
+
+    function drawA7() {
+      const setup = setupCanvas('canvas-a7');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      // Phyphox-style Dark Audio Spectrum Display
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(0, 0, w, h);
+
+      const pad = { l: 52, r: 24, t: 34, b: 36 };
+      const pw = w - pad.l - pad.r;
+      const ph = h - pad.t - pad.b;
+
+      // Grid & Frequency Axis (0 to 1600 Hz)
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.2)';
+      ctx.lineWidth = 1;
+      for (let f = 0; f <= 1600; f += 200) {
+        const x = pad.l + (f / 1600) * pw;
+        ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, h - pad.b); ctx.stroke();
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '600 10px ui-monospace, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${f}`, x, h - pad.b + 15);
+      }
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = '700 11px system-ui, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText('Phyphox Audio Spectrum Analyzer — Frequency (Hz) →', pad.l, 20);
+
+      const note = saptakNotes[a7State.activeIdx];
+      const f0 = note.freq;
+
+      // Draw Spectrum Peaks
+      const harmonics = a7State.timbre === 'tone'
+        ? [{ f: f0, amp: 0.92, label: `Fundamental (${note.swara}: ${f0} Hz)` }]
+        : [
+            { f: f0, amp: 0.92, label: `f₁ = ${f0} Hz` },
+            { f: f0 * 2, amp: 0.48, label: `2f₁ (${f0 * 2} Hz)` },
+            { f: f0 * 3, amp: 0.26, label: `3f₁ (${f0 * 3} Hz)` }
+          ];
+
+      harmonics.forEach((harm, i) => {
+        if (harm.f > 1580) return;
+        const px = pad.l + (harm.f / 1600) * pw;
+        const barH = harm.amp * ph;
+
+        ctx.strokeStyle = i === 0 ? '#38bdf8' : '#f59e0b';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(px, h - pad.b);
+        ctx.lineTo(px, h - pad.b - barH);
+        ctx.stroke();
+
+        ctx.fillStyle = i === 0 ? '#ffffff' : '#fbbf24';
+        ctx.font = '700 10.5px ui-monospace, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(harm.label, px, h - pad.b - barH - 8);
+      });
+    }
+
+    function drawChartA7() {
+      const setup = setupCanvas('chart-a7');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const midY = h / 2;
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(20, midY); ctx.lineTo(w - 20, midY); ctx.stroke();
+      ctx.setLineDash([]);
+
+      const note = saptakNotes[a7State.activeIdx];
+      const cycles = (note.freq / 240) * 3;
+
+      ctx.strokeStyle = a7State.timbre === 'tone' ? '#2563eb' : '#7c3aed';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (let i = 0; i <= 240; i++) {
+        const t = i / 240;
+        const x = 20 + t * (w - 40);
+        const theta = t * cycles * Math.PI * 2 + a7State.phase;
+        let signal = Math.sin(theta);
+        if (a7State.timbre === 'voice') {
+          // Complex waveform with overtones matching Fig. 10.25b
+          signal = 0.65 * Math.sin(theta) + 0.32 * Math.sin(2 * theta) + 0.18 * Math.sin(3 * theta);
+        }
+        const y = midY - signal * (h * 0.38);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+
+    // =========================================================================
+    // ACTIVITY 10.8: HUMAN AUDIBLE RANGE, INFRASONIC & ULTRASONIC LAB
+    // =========================================================================
+    const a8State = {
+      freq: 400,
+      playing: false,
+      phase: 0
+    };
+
+    function sliderToFreq(val) {
+      // Logarithmic mapping: 0 -> 5 Hz, 1000 -> 40,000 Hz
+      const minLog = Math.log10(5);
+      const maxLog = Math.log10(40000);
+      const freq = Math.pow(10, minLog + (val / 1000) * (maxLog - minLog));
+      return Math.round(freq);
+    }
+
+    function freqToSlider(freq) {
+      const minLog = Math.log10(5);
+      const maxLog = Math.log10(40000);
+      return Math.round(((Math.log10(freq) - minLog) / (maxLog - minLog)) * 1000);
+    }
+
+    function setA8Freq(freq) {
+      a8State.freq = Math.max(5, Math.min(40000, freq));
+      document.getElementById('a8-log-slider').value = freqToSlider(a8State.freq);
+      updateA8UI();
+      if (a8State.playing) {
+        startContinuousTone(a8State.freq, false, 0.15);
+      }
+      drawA8();
+      drawChartA8();
+    }
+
+    function stepA8By100(delta) {
+      setA8Freq(a8State.freq + delta);
+    }
+
+    document.getElementById('a8-log-slider').addEventListener('input', (e) => {
+      const f = sliderToFreq(parseInt(e.target.value, 10));
+      a8State.freq = f;
+      updateA8UI();
+      if (a8State.playing) {
+        startContinuousTone(a8State.freq, false, 0.15);
+      }
+      drawA8();
+      drawChartA8();
+    });
+
+    document.getElementById('a8-play-btn').addEventListener('click', () => {
+      a8State.playing = true;
+      document.getElementById('a8-play-btn').textContent = '🔊 Playing...';
+      startContinuousTone(a8State.freq, false, 0.15);
+    });
+
+    document.getElementById('a8-stop-btn').addEventListener('click', () => {
+      a8State.playing = false;
+      document.getElementById('a8-play-btn').textContent = '▶ Play Continuous Tone';
+      stopContinuousTone();
+    });
+
+    function updateA8UI() {
+      const f = a8State.freq;
+      const fLabel = f >= 1000 ? `${(f / 1000).toFixed(2)} kHz (${f} Hz)` : `${f} Hz`;
+      const lamM = 344 / f;
+      const lamLabel = lamM >= 1 ? `${lamM.toFixed(2)} m` : `${(lamM * 100).toFixed(2)} cm`;
+      const periodSec = 1 / f;
+      const perLabel = periodSec >= 0.01 ? `${(periodSec * 1000).toFixed(1)} ms` : `${(periodSec * 1e6).toFixed(1)} µs`;
+
+      document.getElementById('a8-freq-val').textContent = fLabel;
+      document.getElementById('a8-lam-val').textContent = lamLabel;
+      document.getElementById('a8-per-val').textContent = perLabel;
+
+      const badge = document.getElementById('a8-band-badge');
+      const aud = document.getElementById('a8-aud-val');
+      if (f < 20) {
+        badge.textContent = 'Infrasonic Wave (< 20 Hz)';
+        badge.className = 'pill pill-amber';
+        aud.textContent = 'Inaudible (Infra)';
+      } else if (f <= 20000) {
+        badge.textContent = 'Human Audible Range (20 Hz – 20 kHz)';
+        badge.className = 'pill pill-emerald';
+        aud.textContent = f > 4000 ? 'High Pitch' : f > 300 ? 'Mid Pitch' : 'Low Pitch';
+      } else {
+        badge.textContent = 'Ultrasonic Wave (> 20 kHz)';
+        badge.className = 'pill pill-purple';
+        aud.textContent = 'Inaudible (Ultra)';
+      }
+
+      // Determine which species hear this frequency
+      const hearers = [];
+      if (f >= 1 && f <= 12000) hearers.push('Elephant');
+      if (f >= 20 && f <= 20000) hearers.push('Human');
+      if (f >= 60 && f <= 45000) hearers.push('Dog');
+      if (f >= 2000 && f <= 120000) hearers.push('Bat / Dolphin');
+      document.getElementById('a8-who-hears').textContent = `Heard by: ${hearers.join(', ') || 'Specialized Sensors'}`;
+    }
+
+    function stepA8(dt) {
+      a8State.phase += Math.min(25, (a8State.freq / 80)) * dt;
+    }
+
+    function drawA8() {
+      const setup = setupCanvas('canvas-a8');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      // Left: Speaker Cone Oscillating | Right: Compressed/Stretched Wavelength Wavefront
+      const spkX = 76;
+      const spkY = h / 2;
+      const coneOffset = Math.sin(a8State.phase) * 9;
+
+      // Speaker Magnet & Frame
+      ctx.fillStyle = '#1e293b';
+      ctx.fillRect(28, spkY - 26, 26, 52);
+
+      // Vibrating Diaphragm Cone
+      ctx.fillStyle = '#475569';
+      ctx.strokeStyle = '#0f172a';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(54, spkY - 24);
+      ctx.lineTo(spkX + 26 + coneOffset, spkY - 58);
+      ctx.lineTo(spkX + 26 + coneOffset, spkY + 58);
+      ctx.lineTo(54, spkY + 24);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Sound Wave propagating to Right (visual wavelength scales inversely with log frequency)
+      const visualCycles = 1.5 + (freqToSlider(a8State.freq) / 1000) * 16;
+      const waveStartX = spkX + 46;
+      const waveEndX = w - 32;
+      const waveW = waveEndX - waveStartX;
+
+      ctx.strokeStyle = a8State.freq < 20 ? '#d97706' : a8State.freq > 20000 ? '#7c3aed' : '#059669';
+      ctx.lineWidth = 2.8;
+      ctx.beginPath();
+      for (let i = 0; i <= 260; i++) {
+        const u = i / 260;
+        const x = waveStartX + u * waveW;
+        const y = spkY - 68 * Math.sin(u * visualCycles * Math.PI * 2 - a8State.phase);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Status caption
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '700 12px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      const statusMsg = a8State.freq < 20
+        ? 'Infrasonic (< 20 Hz): Speaker cone moves slowly, inaudible to human ears'
+        : a8State.freq > 20000
+          ? 'Ultrasonic (> 20 kHz): Very short wavelength, inaudible to humans (heard by bats & dogs)'
+          : 'Human Audible Range (20 Hz – 20 kHz): Eardrum vibrates and sends signals to brain';
+      ctx.fillText(statusMsg, w / 2, h - 16);
+    }
+
+    function drawChartA8() {
+      const setup = setupCanvas('chart-a8');
+      if (!setup) return;
+      const { ctx, w, h } = setup;
+      ctx.clearRect(0, 0, w, h);
+
+      const pad = { l: 86, r: 24, t: 18, b: 26 };
+      const pw = w - pad.l - pad.r;
+      const toX = (f) => pad.l + (freqToSlider(Math.max(5, Math.min(40000, f))) / 1000) * pw;
+
+      const species = [
+        { name: 'Elephant', min: 5, max: 12000, color: '#d97706', y: 34 },
+        { name: 'Human',    min: 20, max: 20000, color: '#059669', y: 74 },
+        { name: 'Dog',      min: 60, max: 40000, color: '#2563eb', y: 114 },
+        { name: 'Bat/Sonar',min: 2000, max: 40000, color: '#7c3aed', y: 154 }
+      ];
+
+      species.forEach(sp => {
+        ctx.fillStyle = '#334155';
+        ctx.font = '700 11px system-ui, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(sp.name, pad.l - 10, sp.y + 13);
+
+        const x1 = toX(sp.min);
+        const x2 = toX(sp.max);
+        ctx.fillStyle = sp.color;
+        ctx.beginPath(); ctx.roundRect(x1, sp.y, Math.max(8, x2 - x1), 18, 6); ctx.fill();
+      });
+
+      // Vertical Red Marker Line for Current Selected Frequency
+      const curX = toX(a8State.freq);
+      ctx.strokeStyle = '#e11d48';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(curX, 14); ctx.lineTo(curX, h - 22); ctx.stroke();
+    }
+
+    // =========================================================================
+    // GLOBAL RESET & MASTER ANIMATION LOOP
+    // =========================================================================
+    function resetAllActivities() {
+      stopContinuousTone();
+      stopSaptakScale();
+      setA1Box(true); setA1Thickness('thick');
+      setA2Fork(256, 'C4');
+      setA3Ear('desk'); setA3Material('wood');
+      setA4Mode('water');
+      setA5Continuous();
+      resetA6();
+      playSaptakNote(0); stopContinuousTone();
+      setA8Freq(400);
+      resizeAllCanvases();
+    }
+
+    let lastTimestamp = null;
+    function masterLoop(ts) {
+      if (!lastTimestamp) lastTimestamp = ts;
+      const dt = Math.min(0.05, (ts - lastTimestamp) / 1000);
+      lastTimestamp = ts;
+
+      if (activeTab === 0) { stepA1(dt); drawA1(); drawChartA1(); }
+      else if (activeTab === 1) { stepA2(dt); drawA2(); drawChartA2(); }
+      else if (activeTab === 2) { stepA3(dt); drawA3(); }
+      else if (activeTab === 3) { stepA4(dt); drawA4(); drawChartA4(); }
+      else if (activeTab === 4) { stepA5(dt); drawA5(); drawChartA5(); }
+      else if (activeTab === 5) { stepA6(dt); drawA6(); drawChartA6(); }
+      else if (activeTab === 6) { stepA7(dt); drawChartA7(); }
+      else if (activeTab === 7) { stepA8(dt); drawA8(); }
+
+      requestAnimationFrame(masterLoop);
+    }
+
+    window.onload = function () {
+      updateA1UI();
+      updateA3UI();
+      updateA4UI();
+      initA6Grains();
+      renderA7Table();
+      updateA8UI();
+
+      resizeAllCanvases();
+      requestAnimationFrame(masterLoop);
+    };
+  </script>
+</body>
+</html>
